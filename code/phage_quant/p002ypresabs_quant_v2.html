@@ -13115,7 +13115,7 @@ div#notebook {
 
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## This file implements neural networks and logistic regression on p002ypresabs_quant.</span>
@@ -13123,11 +13123,11 @@ div#notebook {
 <span class="c1">## method.</span>
 <span class="c1">## To deal with overfitting problem, we include both dropout and regularizer when set up layers in neural networks.</span>
 <span class="c1">## For fully-connected neural networks, the accuracy is 100% for combination data, and 99.32% for over-sampling data.</span>
-<span class="c1">## For logistic regression, the accuracy is 99.3% for combination data, and 100% for over-sampling data.</span>
+<span class="c1">## For logistic regression, the accuracy is 100% for combination data, and 100% for over-sampling data.</span>
 <span class="c1">## Since the accuracy scores are pretty high in logistic regression, we further construct random forest models, which </span>
 <span class="c1">## are relatively less likely to bring overfitting compared to decision tree.</span>
-<span class="c1">## For random forest, the accuracy is 99.3% for combination data, and 100% for over-sampling data.</span>
-<span class="c1">## For random forest with cross-validation, the mean accuracy is 99.6% for combination data, and 97.4% for over-sampling.</span>
+<span class="c1">## For random forest, the accuracy is 100% for combination data, and 100% for over-sampling data.</span>
+<span class="c1">## For random forest with cross-validation, the mean accuracy is 99.4% for combination data, and 98.83% for over-sampling.</span>
 </pre></div>
 
     </div>
@@ -13137,7 +13137,23 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">numpy.random</span> <span class="k">import</span> <span class="n">seed</span>
+<span class="n">seed</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">tensorflow</span>
+<span class="n">tensorflow</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">set_seed</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -13156,7 +13172,7 @@ div#notebook {
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[1]:</div>
+    <div class="prompt output_prompt">Out[4]:</div>
 
 
 
@@ -13173,7 +13189,20 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Unnamed: 0&#39;</span><span class="p">:</span><span class="s1">&#39;id&#39;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -13186,7 +13215,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;pheno&#39;</span><span class="p">]</span>
@@ -13202,7 +13231,7 @@ div#notebook {
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[3]:</div>
+    <div class="prompt output_prompt">Out[6]:</div>
 
 
 
@@ -13280,7 +13309,7 @@ Name: pheno, Length: 255, dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">if</span> <span class="mf">0.5</span> <span class="ow">in</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;pheno&#39;</span><span class="p">]:</span>
@@ -13294,7 +13323,7 @@ Name: pheno, Length: 255, dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;pheno&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="k">if</span> <span class="n">i</span><span class="o">&gt;</span><span class="mf">0.5</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;pheno&#39;</span><span class="p">]]</span> <span class="c1"># convert pheno into binary</span>
@@ -13307,7 +13336,7 @@ Name: pheno, Length: 255, dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;pheno&#39;</span><span class="p">]</span>
@@ -13324,7 +13353,7 @@ Name: pheno, Length: 255, dtype: float64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[6]:</div>
+    <div class="prompt output_prompt">Out[9]:</div>
 
 
 
@@ -13343,7 +13372,7 @@ Name: pheno, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">shape</span>
@@ -13359,7 +13388,7 @@ Name: pheno, dtype: int64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[7]:</div>
+    <div class="prompt output_prompt">Out[10]:</div>
 
 
 
@@ -13376,7 +13405,7 @@ Name: pheno, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_clean</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">])</span>
@@ -13389,7 +13418,7 @@ Name: pheno, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_clean</span><span class="o">.</span><span class="n">shape</span>
@@ -13405,7 +13434,7 @@ Name: pheno, dtype: int64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[9]:</div>
+    <div class="prompt output_prompt">Out[12]:</div>
 
 
 
@@ -13435,7 +13464,7 @@ Name: pheno, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">df_clean</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">df_clean</span><span class="o">.</span><span class="n">columns</span> <span class="o">!=</span> <span class="s1">&#39;pheno&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
@@ -13468,7 +13497,7 @@ Name: pheno, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># combination of under- and over- sampling</span>
@@ -13516,7 +13545,7 @@ Name: pheno, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># over-sampling</span>
@@ -13564,7 +13593,7 @@ Name: pheno, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># split into train, validation, and test data (combination)</span>
@@ -13582,7 +13611,7 @@ Name: pheno, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># split into train, test data (over)</span>
@@ -13613,7 +13642,7 @@ Name: pheno, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">keras</span>
@@ -13634,13 +13663,13 @@ Name: pheno, dtype: int64</pre>
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Requirement already satisfied: keras in /Users/Rebecca/anaconda3/lib/python3.7/site-packages (2.3.1)
-Requirement already satisfied: six&gt;=1.9.0 in /Users/Rebecca/anaconda3/lib/python3.7/site-packages (from keras) (1.12.0)
-Requirement already satisfied: pyyaml in /Users/Rebecca/anaconda3/lib/python3.7/site-packages (from keras) (5.1)
-Requirement already satisfied: h5py in /Users/Rebecca/anaconda3/lib/python3.7/site-packages (from keras) (2.9.0)
-Requirement already satisfied: numpy&gt;=1.9.1 in /Users/Rebecca/anaconda3/lib/python3.7/site-packages (from keras) (1.16.2)
-Requirement already satisfied: scipy&gt;=0.14 in /Users/Rebecca/anaconda3/lib/python3.7/site-packages (from keras) (1.2.1)
 Requirement already satisfied: keras-preprocessing&gt;=1.0.5 in /Users/Rebecca/anaconda3/lib/python3.7/site-packages (from keras) (1.1.0)
 Requirement already satisfied: keras-applications&gt;=1.0.6 in /Users/Rebecca/anaconda3/lib/python3.7/site-packages (from keras) (1.0.8)
+Requirement already satisfied: pyyaml in /Users/Rebecca/anaconda3/lib/python3.7/site-packages (from keras) (5.1)
+Requirement already satisfied: six&gt;=1.9.0 in /Users/Rebecca/anaconda3/lib/python3.7/site-packages (from keras) (1.12.0)
+Requirement already satisfied: h5py in /Users/Rebecca/anaconda3/lib/python3.7/site-packages (from keras) (2.9.0)
+Requirement already satisfied: scipy&gt;=0.14 in /Users/Rebecca/anaconda3/lib/python3.7/site-packages (from keras) (1.2.1)
+Requirement already satisfied: numpy&gt;=1.9.1 in /Users/Rebecca/anaconda3/lib/python3.7/site-packages (from keras) (1.16.2)
 Note: you may need to restart the kernel to use updated packages.
 </pre>
 </div>
@@ -13652,7 +13681,7 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">############# Fully-Connected Neural Network ################</span>
@@ -13665,7 +13694,7 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">keras.models</span> <span class="k">import</span> <span class="n">Sequential</span>
@@ -13681,7 +13710,7 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#### neural network on combination data</span>
@@ -13699,7 +13728,7 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">model1_comb</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;sgd&#39;</span><span class="p">,</span>
@@ -13714,7 +13743,7 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">model1_comb</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_comb</span><span class="p">,</span> <span class="n">y_train_comb</span><span class="p">,</span>
@@ -13738,218 +13767,218 @@ Note: you may need to restart the kernel to use updated packages.
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Train on 333 samples, validate on 143 samples
 Epoch 1/100
-333/333 [==============================] - 0s 788us/step - loss: 2.0204 - accuracy: 0.7207 - val_loss: 0.6234 - val_accuracy: 0.8601
+333/333 [==============================] - 0s 539us/step - loss: 2.2505 - accuracy: 0.7087 - val_loss: 0.5751 - val_accuracy: 0.8462
 Epoch 2/100
-333/333 [==============================] - 0s 154us/step - loss: 2.0650 - accuracy: 0.8078 - val_loss: 0.5509 - val_accuracy: 0.8182
+333/333 [==============================] - 0s 97us/step - loss: 2.1204 - accuracy: 0.8408 - val_loss: 0.5304 - val_accuracy: 0.8741
 Epoch 3/100
-333/333 [==============================] - 0s 176us/step - loss: 1.5537 - accuracy: 0.8468 - val_loss: 0.5270 - val_accuracy: 0.8182
+333/333 [==============================] - 0s 105us/step - loss: 1.9491 - accuracy: 0.8649 - val_loss: 0.5339 - val_accuracy: 0.8531
 Epoch 4/100
-333/333 [==============================] - 0s 148us/step - loss: 1.8920 - accuracy: 0.8649 - val_loss: 0.4832 - val_accuracy: 0.8671
+333/333 [==============================] - 0s 97us/step - loss: 2.1956 - accuracy: 0.8589 - val_loss: 0.4814 - val_accuracy: 0.9301
 Epoch 5/100
-333/333 [==============================] - 0s 142us/step - loss: 1.8230 - accuracy: 0.8589 - val_loss: 0.4564 - val_accuracy: 0.9231
+333/333 [==============================] - 0s 97us/step - loss: 1.6437 - accuracy: 0.8949 - val_loss: 0.4635 - val_accuracy: 0.8951
 Epoch 6/100
-333/333 [==============================] - 0s 300us/step - loss: 1.9959 - accuracy: 0.8498 - val_loss: 0.4770 - val_accuracy: 0.8671
+333/333 [==============================] - 0s 93us/step - loss: 1.9998 - accuracy: 0.8859 - val_loss: 0.4603 - val_accuracy: 0.8951
 Epoch 7/100
-333/333 [==============================] - 0s 182us/step - loss: 2.3043 - accuracy: 0.8468 - val_loss: 0.4361 - val_accuracy: 0.8881
+333/333 [==============================] - 0s 95us/step - loss: 2.2141 - accuracy: 0.8589 - val_loss: 0.4328 - val_accuracy: 0.9371
 Epoch 8/100
-333/333 [==============================] - 0s 144us/step - loss: 1.7679 - accuracy: 0.8949 - val_loss: 0.4173 - val_accuracy: 0.9091
+333/333 [==============================] - 0s 91us/step - loss: 1.7891 - accuracy: 0.8889 - val_loss: 0.4346 - val_accuracy: 0.9021
 Epoch 9/100
-333/333 [==============================] - 0s 158us/step - loss: 1.5297 - accuracy: 0.9099 - val_loss: 0.4021 - val_accuracy: 0.9231
+333/333 [==============================] - 0s 107us/step - loss: 1.9618 - accuracy: 0.8799 - val_loss: 0.4148 - val_accuracy: 0.9441
 Epoch 10/100
-333/333 [==============================] - 0s 139us/step - loss: 1.8930 - accuracy: 0.8769 - val_loss: 0.3804 - val_accuracy: 0.9441
+333/333 [==============================] - 0s 95us/step - loss: 1.9110 - accuracy: 0.8829 - val_loss: 0.4054 - val_accuracy: 0.9720
 Epoch 11/100
-333/333 [==============================] - 0s 141us/step - loss: 1.5115 - accuracy: 0.9069 - val_loss: 0.3699 - val_accuracy: 0.9510
+333/333 [==============================] - 0s 89us/step - loss: 1.8062 - accuracy: 0.8919 - val_loss: 0.4101 - val_accuracy: 0.9231
 Epoch 12/100
-333/333 [==============================] - 0s 174us/step - loss: 2.4212 - accuracy: 0.8498 - val_loss: 0.3600 - val_accuracy: 0.9790
+333/333 [==============================] - 0s 99us/step - loss: 2.0288 - accuracy: 0.8769 - val_loss: 0.3903 - val_accuracy: 0.9720
 Epoch 13/100
-333/333 [==============================] - 0s 120us/step - loss: 1.5849 - accuracy: 0.9069 - val_loss: 0.3585 - val_accuracy: 0.9720
+333/333 [==============================] - 0s 100us/step - loss: 1.9267 - accuracy: 0.8859 - val_loss: 0.3785 - val_accuracy: 0.9930
 Epoch 14/100
-333/333 [==============================] - 0s 152us/step - loss: 1.9946 - accuracy: 0.8709 - val_loss: 0.3438 - val_accuracy: 0.9720
+333/333 [==============================] - 0s 94us/step - loss: 1.6053 - accuracy: 0.9069 - val_loss: 0.3973 - val_accuracy: 0.9510
 Epoch 15/100
-333/333 [==============================] - 0s 124us/step - loss: 1.5723 - accuracy: 0.9039 - val_loss: 0.3335 - val_accuracy: 0.9790
+333/333 [==============================] - 0s 100us/step - loss: 1.5108 - accuracy: 0.9099 - val_loss: 0.3654 - val_accuracy: 0.9860
 Epoch 16/100
-333/333 [==============================] - 0s 122us/step - loss: 1.5199 - accuracy: 0.9069 - val_loss: 0.3256 - val_accuracy: 0.9790
+333/333 [==============================] - 0s 97us/step - loss: 1.0907 - accuracy: 0.9429 - val_loss: 0.3778 - val_accuracy: 0.9580
 Epoch 17/100
-333/333 [==============================] - 0s 128us/step - loss: 1.8348 - accuracy: 0.8919 - val_loss: 0.3200 - val_accuracy: 0.9860
+333/333 [==============================] - 0s 104us/step - loss: 1.4482 - accuracy: 0.9159 - val_loss: 0.3551 - val_accuracy: 0.9930
 Epoch 18/100
-333/333 [==============================] - 0s 161us/step - loss: 1.4950 - accuracy: 0.9099 - val_loss: 0.3211 - val_accuracy: 0.9860
+333/333 [==============================] - 0s 108us/step - loss: 1.7159 - accuracy: 0.9009 - val_loss: 0.3469 - val_accuracy: 0.9930
 Epoch 19/100
-333/333 [==============================] - 0s 128us/step - loss: 2.0636 - accuracy: 0.8709 - val_loss: 0.3103 - val_accuracy: 0.9930
+333/333 [==============================] - 0s 96us/step - loss: 2.0443 - accuracy: 0.8799 - val_loss: 0.3442 - val_accuracy: 1.0000
 Epoch 20/100
-333/333 [==============================] - 0s 142us/step - loss: 1.5456 - accuracy: 0.9069 - val_loss: 0.3025 - val_accuracy: 0.9930
+333/333 [==============================] - 0s 95us/step - loss: 1.7983 - accuracy: 0.8979 - val_loss: 0.3378 - val_accuracy: 1.0000
 Epoch 21/100
-333/333 [==============================] - 0s 144us/step - loss: 1.7210 - accuracy: 0.8979 - val_loss: 0.2951 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 94us/step - loss: 1.4784 - accuracy: 0.9159 - val_loss: 0.3325 - val_accuracy: 1.0000
 Epoch 22/100
-333/333 [==============================] - 0s 156us/step - loss: 2.1265 - accuracy: 0.8679 - val_loss: 0.2964 - val_accuracy: 0.9930
+333/333 [==============================] - 0s 95us/step - loss: 1.3851 - accuracy: 0.9219 - val_loss: 0.3312 - val_accuracy: 1.0000
 Epoch 23/100
-333/333 [==============================] - 0s 279us/step - loss: 2.3106 - accuracy: 0.8559 - val_loss: 0.2902 - val_accuracy: 0.9930
+333/333 [==============================] - 0s 113us/step - loss: 1.7469 - accuracy: 0.8979 - val_loss: 0.3259 - val_accuracy: 1.0000
 Epoch 24/100
-333/333 [==============================] - 0s 150us/step - loss: 1.1502 - accuracy: 0.9309 - val_loss: 0.2793 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 104us/step - loss: 1.9318 - accuracy: 0.8859 - val_loss: 0.3299 - val_accuracy: 0.9860
 Epoch 25/100
-333/333 [==============================] - 0s 437us/step - loss: 1.7911 - accuracy: 0.8919 - val_loss: 0.2779 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 101us/step - loss: 1.6990 - accuracy: 0.9009 - val_loss: 0.3230 - val_accuracy: 1.0000
 Epoch 26/100
-333/333 [==============================] - 0s 534us/step - loss: 2.0262 - accuracy: 0.8739 - val_loss: 0.2725 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 92us/step - loss: 1.8821 - accuracy: 0.8859 - val_loss: 0.3196 - val_accuracy: 1.0000
 Epoch 27/100
-333/333 [==============================] - 0s 168us/step - loss: 1.7874 - accuracy: 0.8889 - val_loss: 0.2724 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 90us/step - loss: 1.8312 - accuracy: 0.8889 - val_loss: 0.3146 - val_accuracy: 1.0000
 Epoch 28/100
-333/333 [==============================] - 0s 208us/step - loss: 1.5570 - accuracy: 0.9009 - val_loss: 0.2657 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 91us/step - loss: 1.5025 - accuracy: 0.9129 - val_loss: 0.3091 - val_accuracy: 1.0000
 Epoch 29/100
-333/333 [==============================] - 0s 169us/step - loss: 1.5575 - accuracy: 0.9039 - val_loss: 0.2621 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 99us/step - loss: 1.8657 - accuracy: 0.8919 - val_loss: 0.3139 - val_accuracy: 0.9930
 Epoch 30/100
-333/333 [==============================] - 0s 291us/step - loss: 1.4580 - accuracy: 0.9129 - val_loss: 0.2578 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 89us/step - loss: 1.5367 - accuracy: 0.9099 - val_loss: 0.3047 - val_accuracy: 1.0000
 Epoch 31/100
-333/333 [==============================] - 0s 226us/step - loss: 1.9643 - accuracy: 0.8769 - val_loss: 0.2541 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 92us/step - loss: 1.7259 - accuracy: 0.8979 - val_loss: 0.3005 - val_accuracy: 1.0000
 Epoch 32/100
-333/333 [==============================] - 0s 193us/step - loss: 1.5911 - accuracy: 0.9039 - val_loss: 0.2724 - val_accuracy: 0.9930
+333/333 [==============================] - 0s 97us/step - loss: 1.3037 - accuracy: 0.9249 - val_loss: 0.3007 - val_accuracy: 1.0000
 Epoch 33/100
-333/333 [==============================] - 0s 326us/step - loss: 1.9123 - accuracy: 0.8829 - val_loss: 0.2711 - val_accuracy: 0.9930
+333/333 [==============================] - 0s 102us/step - loss: 1.5341 - accuracy: 0.9099 - val_loss: 0.2987 - val_accuracy: 1.0000
 Epoch 34/100
-333/333 [==============================] - 0s 354us/step - loss: 1.5845 - accuracy: 0.9039 - val_loss: 0.2449 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 87us/step - loss: 2.0814 - accuracy: 0.8739 - val_loss: 0.2986 - val_accuracy: 1.0000
 Epoch 35/100
-333/333 [==============================] - 0s 150us/step - loss: 1.6805 - accuracy: 0.8949 - val_loss: 0.2448 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 101us/step - loss: 1.4436 - accuracy: 0.9159 - val_loss: 0.2939 - val_accuracy: 1.0000
 Epoch 36/100
-333/333 [==============================] - 0s 155us/step - loss: 1.3499 - accuracy: 0.9189 - val_loss: 0.2428 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 101us/step - loss: 1.6681 - accuracy: 0.9039 - val_loss: 0.2948 - val_accuracy: 1.0000
 Epoch 37/100
-333/333 [==============================] - 0s 154us/step - loss: 1.8592 - accuracy: 0.8829 - val_loss: 0.2485 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 89us/step - loss: 1.9421 - accuracy: 0.8829 - val_loss: 0.2870 - val_accuracy: 1.0000
 Epoch 38/100
-333/333 [==============================] - 0s 172us/step - loss: 1.8109 - accuracy: 0.8859 - val_loss: 0.2436 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 88us/step - loss: 1.8004 - accuracy: 0.8949 - val_loss: 0.2897 - val_accuracy: 1.0000
 Epoch 39/100
-333/333 [==============================] - 0s 283us/step - loss: 1.7139 - accuracy: 0.8949 - val_loss: 0.2395 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 97us/step - loss: 1.4335 - accuracy: 0.9159 - val_loss: 0.2811 - val_accuracy: 1.0000
 Epoch 40/100
-333/333 [==============================] - 0s 159us/step - loss: 1.4362 - accuracy: 0.9129 - val_loss: 0.2347 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 97us/step - loss: 1.7541 - accuracy: 0.8949 - val_loss: 0.2822 - val_accuracy: 1.0000
 Epoch 41/100
-333/333 [==============================] - 0s 146us/step - loss: 1.7159 - accuracy: 0.8919 - val_loss: 0.2358 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 97us/step - loss: 1.5188 - accuracy: 0.9099 - val_loss: 0.2793 - val_accuracy: 1.0000
 Epoch 42/100
-333/333 [==============================] - 0s 177us/step - loss: 1.7561 - accuracy: 0.8919 - val_loss: 0.2345 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 98us/step - loss: 1.8898 - accuracy: 0.8859 - val_loss: 0.2831 - val_accuracy: 1.0000
 Epoch 43/100
-333/333 [==============================] - 0s 338us/step - loss: 1.8465 - accuracy: 0.8829 - val_loss: 0.2409 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 102us/step - loss: 1.8847 - accuracy: 0.8889 - val_loss: 0.2768 - val_accuracy: 1.0000
 Epoch 44/100
-333/333 [==============================] - 0s 276us/step - loss: 1.8494 - accuracy: 0.8829 - val_loss: 0.2306 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 92us/step - loss: 1.9806 - accuracy: 0.8829 - val_loss: 0.2708 - val_accuracy: 1.0000
 Epoch 45/100
-333/333 [==============================] - 0s 152us/step - loss: 1.7088 - accuracy: 0.8919 - val_loss: 0.2274 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 97us/step - loss: 1.3741 - accuracy: 0.9189 - val_loss: 0.2726 - val_accuracy: 1.0000
 Epoch 46/100
-333/333 [==============================] - 0s 231us/step - loss: 1.6154 - accuracy: 0.8979 - val_loss: 0.2293 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 95us/step - loss: 1.8813 - accuracy: 0.8859 - val_loss: 0.2667 - val_accuracy: 1.0000
 Epoch 47/100
-333/333 [==============================] - 0s 144us/step - loss: 1.3363 - accuracy: 0.9159 - val_loss: 0.2256 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 96us/step - loss: 1.6006 - accuracy: 0.9039 - val_loss: 0.2645 - val_accuracy: 1.0000
 Epoch 48/100
-333/333 [==============================] - 0s 153us/step - loss: 1.5667 - accuracy: 0.9009 - val_loss: 0.2225 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 99us/step - loss: 1.5565 - accuracy: 0.9069 - val_loss: 0.2695 - val_accuracy: 1.0000
 Epoch 49/100
-333/333 [==============================] - 0s 153us/step - loss: 1.3311 - accuracy: 0.9159 - val_loss: 0.2225 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 100us/step - loss: 2.1110 - accuracy: 0.8709 - val_loss: 0.2637 - val_accuracy: 1.0000
 Epoch 50/100
-333/333 [==============================] - 0s 134us/step - loss: 1.5156 - accuracy: 0.9069 - val_loss: 0.2209 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 99us/step - loss: 1.8740 - accuracy: 0.8889 - val_loss: 0.2616 - val_accuracy: 1.0000
 Epoch 51/100
-333/333 [==============================] - 0s 153us/step - loss: 1.6981 - accuracy: 0.8949 - val_loss: 0.2192 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 101us/step - loss: 1.7338 - accuracy: 0.8979 - val_loss: 0.2646 - val_accuracy: 1.0000
 Epoch 52/100
-333/333 [==============================] - 0s 155us/step - loss: 1.7010 - accuracy: 0.8919 - val_loss: 0.2186 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 93us/step - loss: 1.5063 - accuracy: 0.9129 - val_loss: 0.2558 - val_accuracy: 1.0000
 Epoch 53/100
-333/333 [==============================] - 0s 156us/step - loss: 1.1431 - accuracy: 0.9279 - val_loss: 0.2199 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 91us/step - loss: 1.9618 - accuracy: 0.8799 - val_loss: 0.2557 - val_accuracy: 1.0000
 Epoch 54/100
-333/333 [==============================] - 0s 133us/step - loss: 2.1144 - accuracy: 0.8649 - val_loss: 0.2209 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 100us/step - loss: 1.7305 - accuracy: 0.8979 - val_loss: 0.2547 - val_accuracy: 1.0000
 Epoch 55/100
-333/333 [==============================] - 0s 140us/step - loss: 1.6031 - accuracy: 0.9009 - val_loss: 0.2150 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 86us/step - loss: 1.3148 - accuracy: 0.9219 - val_loss: 0.2582 - val_accuracy: 1.0000
 Epoch 56/100
-333/333 [==============================] - 0s 134us/step - loss: 1.6456 - accuracy: 0.9009 - val_loss: 0.2150 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 95us/step - loss: 1.1780 - accuracy: 0.9339 - val_loss: 0.2538 - val_accuracy: 1.0000
 Epoch 57/100
-333/333 [==============================] - 0s 163us/step - loss: 1.5118 - accuracy: 0.9039 - val_loss: 0.2131 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 97us/step - loss: 2.0515 - accuracy: 0.8769 - val_loss: 0.2561 - val_accuracy: 1.0000
 Epoch 58/100
-333/333 [==============================] - 0s 125us/step - loss: 1.6023 - accuracy: 0.8979 - val_loss: 0.2130 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 93us/step - loss: 1.7686 - accuracy: 0.8949 - val_loss: 0.2512 - val_accuracy: 1.0000
 Epoch 59/100
-333/333 [==============================] - 0s 183us/step - loss: 1.5501 - accuracy: 0.9039 - val_loss: 0.2155 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 93us/step - loss: 1.8179 - accuracy: 0.8919 - val_loss: 0.2522 - val_accuracy: 1.0000
 Epoch 60/100
-333/333 [==============================] - 0s 118us/step - loss: 1.5019 - accuracy: 0.9069 - val_loss: 0.2104 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 94us/step - loss: 1.6303 - accuracy: 0.9039 - val_loss: 0.2510 - val_accuracy: 1.0000
 Epoch 61/100
-333/333 [==============================] - 0s 100us/step - loss: 1.7349 - accuracy: 0.8889 - val_loss: 0.2121 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 95us/step - loss: 1.4458 - accuracy: 0.9159 - val_loss: 0.2492 - val_accuracy: 1.0000
 Epoch 62/100
-333/333 [==============================] - 0s 105us/step - loss: 1.4567 - accuracy: 0.9099 - val_loss: 0.2135 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 97us/step - loss: 1.5349 - accuracy: 0.9099 - val_loss: 0.2513 - val_accuracy: 1.0000
 Epoch 63/100
-333/333 [==============================] - 0s 143us/step - loss: 1.1310 - accuracy: 0.9309 - val_loss: 0.2059 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 93us/step - loss: 1.8594 - accuracy: 0.8889 - val_loss: 0.2454 - val_accuracy: 1.0000
 Epoch 64/100
-333/333 [==============================] - 0s 101us/step - loss: 1.7338 - accuracy: 0.8919 - val_loss: 0.2085 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 96us/step - loss: 1.7636 - accuracy: 0.8949 - val_loss: 0.2498 - val_accuracy: 1.0000
 Epoch 65/100
-333/333 [==============================] - 0s 120us/step - loss: 1.9167 - accuracy: 0.8799 - val_loss: 0.2191 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 98us/step - loss: 1.6742 - accuracy: 0.9009 - val_loss: 0.2399 - val_accuracy: 1.0000
 Epoch 66/100
-333/333 [==============================] - 0s 205us/step - loss: 1.4055 - accuracy: 0.9129 - val_loss: 0.2011 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 92us/step - loss: 1.6691 - accuracy: 0.9009 - val_loss: 0.2395 - val_accuracy: 1.0000
 Epoch 67/100
-333/333 [==============================] - 0s 120us/step - loss: 1.2673 - accuracy: 0.9219 - val_loss: 0.2064 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 101us/step - loss: 1.5822 - accuracy: 0.9069 - val_loss: 0.2438 - val_accuracy: 1.0000
 Epoch 68/100
-333/333 [==============================] - 0s 113us/step - loss: 1.5448 - accuracy: 0.9039 - val_loss: 0.2116 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 97us/step - loss: 1.9496 - accuracy: 0.8829 - val_loss: 0.2365 - val_accuracy: 1.0000
 Epoch 69/100
-333/333 [==============================] - 0s 123us/step - loss: 1.6830 - accuracy: 0.8949 - val_loss: 0.2013 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 87us/step - loss: 1.5322 - accuracy: 0.9099 - val_loss: 0.2455 - val_accuracy: 1.0000
 Epoch 70/100
-333/333 [==============================] - 0s 413us/step - loss: 1.9124 - accuracy: 0.8799 - val_loss: 0.1998 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 99us/step - loss: 1.5769 - accuracy: 0.9069 - val_loss: 0.2384 - val_accuracy: 1.0000
 Epoch 71/100
-333/333 [==============================] - 0s 417us/step - loss: 2.1440 - accuracy: 0.8649 - val_loss: 0.2042 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 100us/step - loss: 1.2056 - accuracy: 0.9309 - val_loss: 0.2386 - val_accuracy: 1.0000
 Epoch 72/100
-333/333 [==============================] - 0s 150us/step - loss: 1.6302 - accuracy: 0.8979 - val_loss: 0.2038 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 100us/step - loss: 1.8973 - accuracy: 0.8859 - val_loss: 0.2377 - val_accuracy: 1.0000
 Epoch 73/100
-333/333 [==============================] - 0s 123us/step - loss: 1.5849 - accuracy: 0.9039 - val_loss: 0.2044 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 93us/step - loss: 2.0826 - accuracy: 0.8739 - val_loss: 0.2343 - val_accuracy: 1.0000
 Epoch 74/100
-333/333 [==============================] - 0s 679us/step - loss: 1.3988 - accuracy: 0.9129 - val_loss: 0.2009 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 93us/step - loss: 1.7575 - accuracy: 0.8949 - val_loss: 0.2304 - val_accuracy: 1.0000
 Epoch 75/100
-333/333 [==============================] - 0s 456us/step - loss: 1.8613 - accuracy: 0.8859 - val_loss: 0.2027 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 96us/step - loss: 1.2480 - accuracy: 0.9279 - val_loss: 0.2286 - val_accuracy: 1.0000
 Epoch 76/100
-333/333 [==============================] - 0s 127us/step - loss: 1.5846 - accuracy: 0.9009 - val_loss: 0.1973 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 93us/step - loss: 1.4786 - accuracy: 0.9129 - val_loss: 0.2326 - val_accuracy: 1.0000
 Epoch 77/100
-333/333 [==============================] - 0s 321us/step - loss: 2.0478 - accuracy: 0.8709 - val_loss: 0.2225 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 91us/step - loss: 1.6623 - accuracy: 0.9009 - val_loss: 0.2330 - val_accuracy: 1.0000
 Epoch 78/100
-333/333 [==============================] - 0s 273us/step - loss: 1.7694 - accuracy: 0.8889 - val_loss: 0.2029 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 105us/step - loss: 1.3340 - accuracy: 0.9219 - val_loss: 0.2288 - val_accuracy: 1.0000
 Epoch 79/100
-333/333 [==============================] - 0s 299us/step - loss: 1.4447 - accuracy: 0.9099 - val_loss: 0.1980 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 102us/step - loss: 1.2449 - accuracy: 0.9279 - val_loss: 0.2286 - val_accuracy: 1.0000
 Epoch 80/100
-333/333 [==============================] - 0s 378us/step - loss: 1.5778 - accuracy: 0.9039 - val_loss: 0.1964 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 98us/step - loss: 1.2902 - accuracy: 0.9249 - val_loss: 0.2282 - val_accuracy: 1.0000
 Epoch 81/100
-333/333 [==============================] - 0s 357us/step - loss: 1.9021 - accuracy: 0.8799 - val_loss: 0.1993 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 97us/step - loss: 1.5659 - accuracy: 0.9069 - val_loss: 0.2278 - val_accuracy: 1.0000
 Epoch 82/100
-333/333 [==============================] - 0s 327us/step - loss: 1.9524 - accuracy: 0.8769 - val_loss: 0.1997 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 98us/step - loss: 1.6571 - accuracy: 0.9009 - val_loss: 0.2292 - val_accuracy: 1.0000
 Epoch 83/100
-333/333 [==============================] - 0s 175us/step - loss: 1.7189 - accuracy: 0.8949 - val_loss: 0.1952 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 93us/step - loss: 1.8882 - accuracy: 0.8859 - val_loss: 0.2301 - val_accuracy: 1.0000
 Epoch 84/100
-333/333 [==============================] - 1s 2ms/step - loss: 1.4857 - accuracy: 0.9099 - val_loss: 0.1882 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 95us/step - loss: 1.8396 - accuracy: 0.8889 - val_loss: 0.2285 - val_accuracy: 1.0000
 Epoch 85/100
-333/333 [==============================] - 0s 230us/step - loss: 2.0875 - accuracy: 0.8709 - val_loss: 0.1997 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 90us/step - loss: 2.0258 - accuracy: 0.8769 - val_loss: 0.2243 - val_accuracy: 1.0000
 Epoch 86/100
-333/333 [==============================] - 0s 1ms/step - loss: 1.3942 - accuracy: 0.9159 - val_loss: 0.1940 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 94us/step - loss: 2.0718 - accuracy: 0.8739 - val_loss: 0.2302 - val_accuracy: 1.0000
 Epoch 87/100
-333/333 [==============================] - 0s 322us/step - loss: 1.8101 - accuracy: 0.8889 - val_loss: 0.1936 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 92us/step - loss: 2.2567 - accuracy: 0.8619 - val_loss: 0.2275 - val_accuracy: 1.0000
 Epoch 88/100
-333/333 [==============================] - 0s 317us/step - loss: 1.1610 - accuracy: 0.9309 - val_loss: 0.1939 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 97us/step - loss: 1.4666 - accuracy: 0.9129 - val_loss: 0.2273 - val_accuracy: 1.0000
 Epoch 89/100
-333/333 [==============================] - 0s 1ms/step - loss: 1.5304 - accuracy: 0.9069 - val_loss: 0.1915 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 95us/step - loss: 1.3743 - accuracy: 0.9189 - val_loss: 0.2289 - val_accuracy: 1.0000
 Epoch 90/100
-333/333 [==============================] - 0s 209us/step - loss: 2.0380 - accuracy: 0.8739 - val_loss: 0.1945 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 93us/step - loss: 1.6527 - accuracy: 0.9009 - val_loss: 0.2209 - val_accuracy: 1.0000
 Epoch 91/100
-333/333 [==============================] - 0s 144us/step - loss: 1.8053 - accuracy: 0.8889 - val_loss: 0.1939 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 93us/step - loss: 1.4669 - accuracy: 0.9129 - val_loss: 0.2214 - val_accuracy: 1.0000
 Epoch 92/100
-333/333 [==============================] - 0s 115us/step - loss: 1.9471 - accuracy: 0.8799 - val_loss: 0.1824 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 100us/step - loss: 2.3472 - accuracy: 0.8559 - val_loss: 0.2223 - val_accuracy: 1.0000
 Epoch 93/100
-333/333 [==============================] - 0s 128us/step - loss: 1.8552 - accuracy: 0.8859 - val_loss: 0.1924 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 94us/step - loss: 1.0943 - accuracy: 0.9369 - val_loss: 0.2231 - val_accuracy: 1.0000
 Epoch 94/100
-333/333 [==============================] - 0s 125us/step - loss: 1.7597 - accuracy: 0.8919 - val_loss: 0.2027 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 95us/step - loss: 1.6528 - accuracy: 0.9009 - val_loss: 0.2208 - val_accuracy: 1.0000
 Epoch 95/100
-333/333 [==============================] - 0s 140us/step - loss: 1.6677 - accuracy: 0.8979 - val_loss: 0.1928 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 105us/step - loss: 1.6482 - accuracy: 0.9009 - val_loss: 0.2191 - val_accuracy: 1.0000
 Epoch 96/100
-333/333 [==============================] - 0s 251us/step - loss: 1.6655 - accuracy: 0.8979 - val_loss: 0.1897 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 93us/step - loss: 1.6030 - accuracy: 0.9039 - val_loss: 0.2135 - val_accuracy: 1.0000
 Epoch 97/100
-333/333 [==============================] - 0s 183us/step - loss: 1.2946 - accuracy: 0.9219 - val_loss: 0.1880 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 96us/step - loss: 1.6483 - accuracy: 0.9009 - val_loss: 0.2200 - val_accuracy: 1.0000
 Epoch 98/100
-333/333 [==============================] - 0s 160us/step - loss: 1.6200 - accuracy: 0.9009 - val_loss: 0.1816 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 97us/step - loss: 1.2292 - accuracy: 0.9279 - val_loss: 0.2209 - val_accuracy: 1.0000
 Epoch 99/100
-333/333 [==============================] - 0s 190us/step - loss: 1.7125 - accuracy: 0.8949 - val_loss: 0.1892 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 86us/step - loss: 1.7410 - accuracy: 0.8949 - val_loss: 0.2194 - val_accuracy: 1.0000
 Epoch 100/100
-333/333 [==============================] - 0s 144us/step - loss: 1.7563 - accuracy: 0.8919 - val_loss: 0.1902 - val_accuracy: 1.0000
+333/333 [==============================] - 0s 94us/step - loss: 1.7845 - accuracy: 0.8919 - val_loss: 0.2168 - val_accuracy: 1.0000
 </pre>
 </div>
 </div>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[20]:</div>
+    <div class="prompt output_prompt">Out[23]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;keras.callbacks.callbacks.History at 0x1a42773f60&gt;</pre>
+<pre>&lt;keras.callbacks.callbacks.History at 0x1a42913e10&gt;</pre>
 </div>
 
 </div>
@@ -13960,7 +13989,7 @@ Epoch 100/100
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">acc_test_comb</span> <span class="o">=</span> <span class="n">model1_comb</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">X_test_comb</span><span class="p">,</span> <span class="n">y_test_comb</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
@@ -13981,7 +14010,7 @@ Epoch 100/100
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>143/143 [==============================] - 0s 87us/step
+<pre>143/143 [==============================] - 0s 116us/step
 combination test accuracy: 100.00%
 </pre>
 </div>
@@ -13993,7 +14022,7 @@ combination test accuracy: 100.00%
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">###### neural network on over-sampling data</span>
@@ -14011,7 +14040,7 @@ combination test accuracy: 100.00%
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">model1_over</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;sgd&#39;</span><span class="p">,</span>
@@ -14026,7 +14055,7 @@ combination test accuracy: 100.00%
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">model1_over</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_over</span><span class="p">,</span> <span class="n">y_train_over</span><span class="p">,</span>
@@ -14050,218 +14079,218 @@ combination test accuracy: 100.00%
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Train on 341 samples, validate on 147 samples
 Epoch 1/100
-341/341 [==============================] - 0s 640us/step - loss: 2.5008 - accuracy: 0.6188 - val_loss: 0.6546 - val_accuracy: 0.7619
+341/341 [==============================] - 0s 654us/step - loss: 1.6251 - accuracy: 0.6745 - val_loss: 0.6403 - val_accuracy: 0.7551
 Epoch 2/100
-341/341 [==============================] - 0s 122us/step - loss: 1.9459 - accuracy: 0.7126 - val_loss: 0.6206 - val_accuracy: 0.7755
+341/341 [==============================] - 0s 89us/step - loss: 2.0915 - accuracy: 0.7507 - val_loss: 0.5943 - val_accuracy: 0.7823
 Epoch 3/100
-341/341 [==============================] - 0s 127us/step - loss: 2.1338 - accuracy: 0.7009 - val_loss: 0.6132 - val_accuracy: 0.7755
+341/341 [==============================] - 0s 97us/step - loss: 1.8977 - accuracy: 0.7771 - val_loss: 0.5682 - val_accuracy: 0.7823
 Epoch 4/100
-341/341 [==============================] - 0s 126us/step - loss: 2.3887 - accuracy: 0.7097 - val_loss: 0.6141 - val_accuracy: 0.7755
+341/341 [==============================] - 0s 92us/step - loss: 2.2811 - accuracy: 0.7683 - val_loss: 0.5476 - val_accuracy: 0.8299
 Epoch 5/100
-341/341 [==============================] - 0s 127us/step - loss: 1.9817 - accuracy: 0.7507 - val_loss: 0.5801 - val_accuracy: 0.7619
+341/341 [==============================] - 0s 138us/step - loss: 2.3734 - accuracy: 0.7713 - val_loss: 0.5351 - val_accuracy: 0.8912
 Epoch 6/100
-341/341 [==============================] - 0s 160us/step - loss: 1.4946 - accuracy: 0.7947 - val_loss: 0.5751 - val_accuracy: 0.7619
+341/341 [==============================] - 0s 101us/step - loss: 1.7037 - accuracy: 0.8270 - val_loss: 0.5160 - val_accuracy: 0.8844
 Epoch 7/100
-341/341 [==============================] - 0s 126us/step - loss: 1.9504 - accuracy: 0.8123 - val_loss: 0.5393 - val_accuracy: 0.9184
+341/341 [==============================] - 0s 95us/step - loss: 2.0775 - accuracy: 0.7977 - val_loss: 0.5235 - val_accuracy: 0.7891
 Epoch 8/100
-341/341 [==============================] - 0s 127us/step - loss: 2.1852 - accuracy: 0.7947 - val_loss: 0.5292 - val_accuracy: 0.8435
+341/341 [==============================] - 0s 91us/step - loss: 1.8232 - accuracy: 0.8299 - val_loss: 0.5102 - val_accuracy: 0.9184
 Epoch 9/100
-341/341 [==============================] - 0s 134us/step - loss: 1.9242 - accuracy: 0.8182 - val_loss: 0.5213 - val_accuracy: 0.8571
+341/341 [==============================] - 0s 91us/step - loss: 1.8398 - accuracy: 0.8152 - val_loss: 0.4902 - val_accuracy: 0.8912
 Epoch 10/100
-341/341 [==============================] - ETA: 0s - loss: 2.7869 - accuracy: 0.81 - 0s 152us/step - loss: 2.2182 - accuracy: 0.8123 - val_loss: 0.5122 - val_accuracy: 0.8503
+341/341 [==============================] - 0s 97us/step - loss: 1.9812 - accuracy: 0.8094 - val_loss: 0.5052 - val_accuracy: 0.8639
 Epoch 11/100
-341/341 [==============================] - 0s 167us/step - loss: 2.2549 - accuracy: 0.8123 - val_loss: 0.5134 - val_accuracy: 0.8027
+341/341 [==============================] - 0s 89us/step - loss: 2.4265 - accuracy: 0.7918 - val_loss: 0.4738 - val_accuracy: 0.8912
 Epoch 12/100
-341/341 [==============================] - 0s 166us/step - loss: 2.0399 - accuracy: 0.8065 - val_loss: 0.4934 - val_accuracy: 0.9320
+341/341 [==============================] - 0s 90us/step - loss: 2.0998 - accuracy: 0.8182 - val_loss: 0.4821 - val_accuracy: 0.9184
 Epoch 13/100
-341/341 [==============================] - 0s 180us/step - loss: 2.2944 - accuracy: 0.8123 - val_loss: 0.4791 - val_accuracy: 0.9252
+341/341 [==============================] - 0s 108us/step - loss: 2.0048 - accuracy: 0.8240 - val_loss: 0.4556 - val_accuracy: 0.9252
 Epoch 14/100
-341/341 [==============================] - 0s 785us/step - loss: 2.2329 - accuracy: 0.8182 - val_loss: 0.5016 - val_accuracy: 0.8571
+341/341 [==============================] - 0s 92us/step - loss: 1.9618 - accuracy: 0.8211 - val_loss: 0.4468 - val_accuracy: 0.9048
 Epoch 15/100
-341/341 [==============================] - 0s 143us/step - loss: 1.6649 - accuracy: 0.8416 - val_loss: 0.4755 - val_accuracy: 0.9388
+341/341 [==============================] - 0s 95us/step - loss: 1.8693 - accuracy: 0.8182 - val_loss: 0.4462 - val_accuracy: 0.9116
 Epoch 16/100
-341/341 [==============================] - 0s 128us/step - loss: 2.1200 - accuracy: 0.8123 - val_loss: 0.4792 - val_accuracy: 0.9320
+341/341 [==============================] - 0s 100us/step - loss: 1.7196 - accuracy: 0.8446 - val_loss: 0.4372 - val_accuracy: 0.9116
 Epoch 17/100
-341/341 [==============================] - 0s 124us/step - loss: 1.6852 - accuracy: 0.8475 - val_loss: 0.4527 - val_accuracy: 0.9388
+341/341 [==============================] - 0s 97us/step - loss: 1.6680 - accuracy: 0.8446 - val_loss: 0.4291 - val_accuracy: 0.9116
 Epoch 18/100
-341/341 [==============================] - 0s 133us/step - loss: 2.0358 - accuracy: 0.8123 - val_loss: 0.4432 - val_accuracy: 0.9388
+341/341 [==============================] - 0s 96us/step - loss: 1.8527 - accuracy: 0.8182 - val_loss: 0.4243 - val_accuracy: 0.9388
 Epoch 19/100
-341/341 [==============================] - 0s 126us/step - loss: 1.7157 - accuracy: 0.8328 - val_loss: 0.4350 - val_accuracy: 0.9320
+341/341 [==============================] - 0s 96us/step - loss: 1.9259 - accuracy: 0.8387 - val_loss: 0.4419 - val_accuracy: 0.9184
 Epoch 20/100
-341/341 [==============================] - 0s 129us/step - loss: 1.6045 - accuracy: 0.8680 - val_loss: 0.4700 - val_accuracy: 0.8912
+341/341 [==============================] - 0s 103us/step - loss: 1.8727 - accuracy: 0.8328 - val_loss: 0.4307 - val_accuracy: 0.9184
 Epoch 21/100
-341/341 [==============================] - 0s 165us/step - loss: 1.4763 - accuracy: 0.8768 - val_loss: 0.4189 - val_accuracy: 0.9388
+341/341 [==============================] - 0s 109us/step - loss: 1.6862 - accuracy: 0.8592 - val_loss: 0.4190 - val_accuracy: 0.9184
 Epoch 22/100
-341/341 [==============================] - 0s 244us/step - loss: 2.1493 - accuracy: 0.8182 - val_loss: 0.4123 - val_accuracy: 0.9388
+341/341 [==============================] - 0s 93us/step - loss: 1.6609 - accuracy: 0.8328 - val_loss: 0.4364 - val_accuracy: 0.9184
 Epoch 23/100
-341/341 [==============================] - 0s 387us/step - loss: 1.6871 - accuracy: 0.8534 - val_loss: 0.4110 - val_accuracy: 0.9320
+341/341 [==============================] - 0s 96us/step - loss: 1.9610 - accuracy: 0.8387 - val_loss: 0.4019 - val_accuracy: 0.9388
 Epoch 24/100
-341/341 [==============================] - 0s 136us/step - loss: 1.8148 - accuracy: 0.8504 - val_loss: 0.4418 - val_accuracy: 0.8912
+341/341 [==============================] - 0s 90us/step - loss: 1.6758 - accuracy: 0.8680 - val_loss: 0.3946 - val_accuracy: 0.9388
 Epoch 25/100
-341/341 [==============================] - 0s 140us/step - loss: 1.6807 - accuracy: 0.8710 - val_loss: 0.4261 - val_accuracy: 0.9456
+341/341 [==============================] - 0s 91us/step - loss: 1.9913 - accuracy: 0.8387 - val_loss: 0.3972 - val_accuracy: 0.9116
 Epoch 26/100
-341/341 [==============================] - 0s 147us/step - loss: 1.5839 - accuracy: 0.8710 - val_loss: 0.4003 - val_accuracy: 0.9796
+341/341 [==============================] - 0s 90us/step - loss: 1.8624 - accuracy: 0.8504 - val_loss: 0.3862 - val_accuracy: 0.9456
 Epoch 27/100
-341/341 [==============================] - 0s 130us/step - loss: 1.6144 - accuracy: 0.8827 - val_loss: 0.3896 - val_accuracy: 0.9456
+341/341 [==============================] - 0s 102us/step - loss: 1.9320 - accuracy: 0.8592 - val_loss: 0.3952 - val_accuracy: 0.9184
 Epoch 28/100
-341/341 [==============================] - 0s 138us/step - loss: 1.9826 - accuracy: 0.8504 - val_loss: 0.4213 - val_accuracy: 0.8912
+341/341 [==============================] - 0s 93us/step - loss: 2.0243 - accuracy: 0.8328 - val_loss: 0.3750 - val_accuracy: 0.9388
 Epoch 29/100
-341/341 [==============================] - 0s 152us/step - loss: 1.5356 - accuracy: 0.8768 - val_loss: 0.4274 - val_accuracy: 0.9864
+341/341 [==============================] - 0s 89us/step - loss: 1.8011 - accuracy: 0.8651 - val_loss: 0.3797 - val_accuracy: 0.9184
 Epoch 30/100
-341/341 [==============================] - 0s 140us/step - loss: 1.7604 - accuracy: 0.8622 - val_loss: 0.3835 - val_accuracy: 0.9456
+341/341 [==============================] - 0s 89us/step - loss: 1.8328 - accuracy: 0.8592 - val_loss: 0.3688 - val_accuracy: 0.9864
 Epoch 31/100
-341/341 [==============================] - 0s 168us/step - loss: 1.4411 - accuracy: 0.8886 - val_loss: 0.3895 - val_accuracy: 0.9456
+341/341 [==============================] - 0s 98us/step - loss: 2.3173 - accuracy: 0.8416 - val_loss: 0.3772 - val_accuracy: 0.9864
 Epoch 32/100
-341/341 [==============================] - 0s 127us/step - loss: 1.8266 - accuracy: 0.8739 - val_loss: 0.3665 - val_accuracy: 0.9456
+341/341 [==============================] - 0s 89us/step - loss: 1.4112 - accuracy: 0.9003 - val_loss: 0.3643 - val_accuracy: 0.9592
 Epoch 33/100
-341/341 [==============================] - 0s 143us/step - loss: 2.0416 - accuracy: 0.8592 - val_loss: 0.3611 - val_accuracy: 0.9456
+341/341 [==============================] - 0s 92us/step - loss: 2.0058 - accuracy: 0.8622 - val_loss: 0.3542 - val_accuracy: 0.9864
 Epoch 34/100
-341/341 [==============================] - 0s 136us/step - loss: 1.7905 - accuracy: 0.8710 - val_loss: 0.3690 - val_accuracy: 0.9456
+341/341 [==============================] - 0s 95us/step - loss: 1.9173 - accuracy: 0.8680 - val_loss: 0.3681 - val_accuracy: 0.9184
 Epoch 35/100
-341/341 [==============================] - 0s 123us/step - loss: 2.1399 - accuracy: 0.8416 - val_loss: 0.3543 - val_accuracy: 0.9456
+341/341 [==============================] - 0s 113us/step - loss: 1.8198 - accuracy: 0.8739 - val_loss: 0.3470 - val_accuracy: 0.9388
 Epoch 36/100
-341/341 [==============================] - 0s 148us/step - loss: 1.6769 - accuracy: 0.8856 - val_loss: 0.3535 - val_accuracy: 0.9864
+341/341 [==============================] - 0s 97us/step - loss: 1.7747 - accuracy: 0.8710 - val_loss: 0.3496 - val_accuracy: 0.9184
 Epoch 37/100
-341/341 [==============================] - 0s 162us/step - loss: 1.9470 - accuracy: 0.8739 - val_loss: 0.3510 - val_accuracy: 0.9388
+341/341 [==============================] - 0s 89us/step - loss: 2.1570 - accuracy: 0.8592 - val_loss: 0.3439 - val_accuracy: 0.9184
 Epoch 38/100
-341/341 [==============================] - 0s 188us/step - loss: 1.8130 - accuracy: 0.8768 - val_loss: 0.3546 - val_accuracy: 0.9932
+341/341 [==============================] - 0s 113us/step - loss: 1.5789 - accuracy: 0.8974 - val_loss: 0.3441 - val_accuracy: 0.9864
 Epoch 39/100
-341/341 [==============================] - 0s 138us/step - loss: 1.8615 - accuracy: 0.8768 - val_loss: 0.3440 - val_accuracy: 0.9932
+341/341 [==============================] - 0s 95us/step - loss: 2.0775 - accuracy: 0.8563 - val_loss: 0.3355 - val_accuracy: 0.9932
 Epoch 40/100
-341/341 [==============================] - 0s 146us/step - loss: 2.0214 - accuracy: 0.8710 - val_loss: 0.3344 - val_accuracy: 0.9864
+341/341 [==============================] - 0s 105us/step - loss: 1.8016 - accuracy: 0.8827 - val_loss: 0.3344 - val_accuracy: 0.9932
 Epoch 41/100
-341/341 [==============================] - 0s 532us/step - loss: 1.8802 - accuracy: 0.8768 - val_loss: 0.3385 - val_accuracy: 0.9456
+341/341 [==============================] - 0s 96us/step - loss: 1.6557 - accuracy: 0.8944 - val_loss: 0.3303 - val_accuracy: 0.9932
 Epoch 42/100
-341/341 [==============================] - 0s 186us/step - loss: 1.8906 - accuracy: 0.8739 - val_loss: 0.3641 - val_accuracy: 0.9864
+341/341 [==============================] - 0s 87us/step - loss: 1.6677 - accuracy: 0.8886 - val_loss: 0.3506 - val_accuracy: 0.9184
 Epoch 43/100
-341/341 [==============================] - 0s 882us/step - loss: 2.1066 - accuracy: 0.8563 - val_loss: 0.3342 - val_accuracy: 0.9864
+341/341 [==============================] - 0s 88us/step - loss: 1.8953 - accuracy: 0.8739 - val_loss: 0.3369 - val_accuracy: 0.9456
 Epoch 44/100
-341/341 [==============================] - 0s 430us/step - loss: 1.5214 - accuracy: 0.9032 - val_loss: 0.3423 - val_accuracy: 0.9456
+341/341 [==============================] - 0s 100us/step - loss: 1.7888 - accuracy: 0.8856 - val_loss: 0.3404 - val_accuracy: 0.8503
 Epoch 45/100
-341/341 [==============================] - 0s 189us/step - loss: 1.7025 - accuracy: 0.8886 - val_loss: 0.3200 - val_accuracy: 0.9864
+341/341 [==============================] - ETA: 0s - loss: 2.1579 - accuracy: 0.87 - 0s 89us/step - loss: 1.6579 - accuracy: 0.8974 - val_loss: 0.3242 - val_accuracy: 0.9864
 Epoch 46/100
-341/341 [==============================] - 0s 166us/step - loss: 1.6115 - accuracy: 0.8886 - val_loss: 0.3315 - val_accuracy: 0.9932
+341/341 [==============================] - 0s 94us/step - loss: 1.4641 - accuracy: 0.9120 - val_loss: 0.3276 - val_accuracy: 0.9864
 Epoch 47/100
-341/341 [==============================] - 0s 146us/step - loss: 1.8407 - accuracy: 0.8739 - val_loss: 0.3191 - val_accuracy: 0.9932
+341/341 [==============================] - 0s 103us/step - loss: 1.6103 - accuracy: 0.8944 - val_loss: 0.3426 - val_accuracy: 0.9864
 Epoch 48/100
-341/341 [==============================] - 0s 143us/step - loss: 1.7347 - accuracy: 0.8886 - val_loss: 0.3226 - val_accuracy: 0.9864
+341/341 [==============================] - 0s 96us/step - loss: 1.7277 - accuracy: 0.8915 - val_loss: 0.3119 - val_accuracy: 0.9864
 Epoch 49/100
-341/341 [==============================] - 0s 174us/step - loss: 1.7417 - accuracy: 0.8827 - val_loss: 0.3757 - val_accuracy: 0.8299
+341/341 [==============================] - 0s 89us/step - loss: 1.7286 - accuracy: 0.8886 - val_loss: 0.3206 - val_accuracy: 0.9660
 Epoch 50/100
-341/341 [==============================] - 0s 467us/step - loss: 1.6061 - accuracy: 0.8944 - val_loss: 0.3404 - val_accuracy: 0.9524
+341/341 [==============================] - 0s 88us/step - loss: 1.2405 - accuracy: 0.9179 - val_loss: 0.3357 - val_accuracy: 0.9864
 Epoch 51/100
-341/341 [==============================] - 0s 442us/step - loss: 1.7369 - accuracy: 0.8827 - val_loss: 0.3305 - val_accuracy: 0.9932
+341/341 [==============================] - 0s 86us/step - loss: 1.6473 - accuracy: 0.8886 - val_loss: 0.3064 - val_accuracy: 0.9932
 Epoch 52/100
-341/341 [==============================] - 0s 354us/step - loss: 2.1461 - accuracy: 0.8563 - val_loss: 0.3032 - val_accuracy: 0.9864
+341/341 [==============================] - 0s 92us/step - loss: 1.9565 - accuracy: 0.8710 - val_loss: 0.3051 - val_accuracy: 0.9932
 Epoch 53/100
-341/341 [==============================] - 0s 139us/step - loss: 1.4974 - accuracy: 0.9062 - val_loss: 0.3000 - val_accuracy: 0.9864
+341/341 [==============================] - 0s 93us/step - loss: 1.8259 - accuracy: 0.8798 - val_loss: 0.3015 - val_accuracy: 0.9932
 Epoch 54/100
-341/341 [==============================] - 0s 116us/step - loss: 1.8078 - accuracy: 0.8856 - val_loss: 0.2970 - val_accuracy: 0.9864
+341/341 [==============================] - 0s 86us/step - loss: 1.6750 - accuracy: 0.8915 - val_loss: 0.2983 - val_accuracy: 0.9932
 Epoch 55/100
-341/341 [==============================] - 0s 161us/step - loss: 1.5475 - accuracy: 0.9003 - val_loss: 0.2960 - val_accuracy: 0.9864
+341/341 [==============================] - 0s 90us/step - loss: 1.8961 - accuracy: 0.8798 - val_loss: 0.3088 - val_accuracy: 0.9864
 Epoch 56/100
-341/341 [==============================] - 0s 154us/step - loss: 1.7729 - accuracy: 0.8886 - val_loss: 0.3049 - val_accuracy: 0.9932
+341/341 [==============================] - 0s 91us/step - loss: 1.9542 - accuracy: 0.8739 - val_loss: 0.2984 - val_accuracy: 0.9864
 Epoch 57/100
-341/341 [==============================] - 0s 125us/step - loss: 1.8177 - accuracy: 0.8768 - val_loss: 0.3636 - val_accuracy: 0.8844
+341/341 [==============================] - 0s 89us/step - loss: 1.6792 - accuracy: 0.8915 - val_loss: 0.2925 - val_accuracy: 0.9932
 Epoch 58/100
-341/341 [==============================] - 0s 136us/step - loss: 1.6396 - accuracy: 0.8944 - val_loss: 0.2977 - val_accuracy: 0.9932
+341/341 [==============================] - 0s 86us/step - loss: 1.9401 - accuracy: 0.8768 - val_loss: 0.3075 - val_accuracy: 0.9864
 Epoch 59/100
-341/341 [==============================] - 0s 118us/step - loss: 1.8126 - accuracy: 0.8798 - val_loss: 0.3020 - val_accuracy: 0.9932
+341/341 [==============================] - 0s 83us/step - loss: 1.9547 - accuracy: 0.8710 - val_loss: 0.3064 - val_accuracy: 0.9932
 Epoch 60/100
-341/341 [==============================] - 0s 109us/step - loss: 1.8629 - accuracy: 0.8739 - val_loss: 0.3085 - val_accuracy: 1.0000
+341/341 [==============================] - 0s 84us/step - loss: 1.8559 - accuracy: 0.8768 - val_loss: 0.2975 - val_accuracy: 0.9932
 Epoch 61/100
-341/341 [==============================] - 0s 106us/step - loss: 1.5919 - accuracy: 0.8944 - val_loss: 0.3021 - val_accuracy: 0.9932
+341/341 [==============================] - 0s 84us/step - loss: 1.7951 - accuracy: 0.8886 - val_loss: 0.2839 - val_accuracy: 0.9932
 Epoch 62/100
-341/341 [==============================] - 0s 286us/step - loss: 1.3654 - accuracy: 0.9091 - val_loss: 0.3170 - val_accuracy: 0.9932
+341/341 [==============================] - 0s 88us/step - loss: 1.9673 - accuracy: 0.8768 - val_loss: 0.2812 - val_accuracy: 0.9932
 Epoch 63/100
-341/341 [==============================] - 0s 743us/step - loss: 1.8953 - accuracy: 0.8798 - val_loss: 0.2887 - val_accuracy: 0.9864
+341/341 [==============================] - 0s 89us/step - loss: 1.5359 - accuracy: 0.9003 - val_loss: 0.2890 - val_accuracy: 0.9932
 Epoch 64/100
-341/341 [==============================] - 0s 179us/step - loss: 2.1209 - accuracy: 0.8592 - val_loss: 0.2936 - val_accuracy: 0.9932
+341/341 [==============================] - 0s 90us/step - loss: 1.6316 - accuracy: 0.8886 - val_loss: 0.3002 - val_accuracy: 0.9660
 Epoch 65/100
-341/341 [==============================] - 0s 235us/step - loss: 2.2252 - accuracy: 0.8504 - val_loss: 0.3054 - val_accuracy: 0.9864
+341/341 [==============================] - 0s 92us/step - loss: 1.6254 - accuracy: 0.8886 - val_loss: 0.3014 - val_accuracy: 0.9932
 Epoch 66/100
-341/341 [==============================] - 0s 229us/step - loss: 1.6732 - accuracy: 0.8915 - val_loss: 0.2792 - val_accuracy: 0.9932
+341/341 [==============================] - 0s 88us/step - loss: 1.7677 - accuracy: 0.8798 - val_loss: 0.2804 - val_accuracy: 0.9932
 Epoch 67/100
-341/341 [==============================] - 0s 141us/step - loss: 1.6229 - accuracy: 0.8915 - val_loss: 0.2778 - val_accuracy: 0.9864
+341/341 [==============================] - 0s 84us/step - loss: 1.8424 - accuracy: 0.8798 - val_loss: 0.2789 - val_accuracy: 0.9932
 Epoch 68/100
-341/341 [==============================] - 0s 115us/step - loss: 1.9348 - accuracy: 0.8710 - val_loss: 0.2775 - val_accuracy: 0.9864
+341/341 [==============================] - 0s 83us/step - loss: 1.7124 - accuracy: 0.8827 - val_loss: 0.2836 - val_accuracy: 0.9932
 Epoch 69/100
-341/341 [==============================] - 0s 142us/step - loss: 1.6678 - accuracy: 0.8886 - val_loss: 0.2793 - val_accuracy: 0.9932
+341/341 [==============================] - 0s 84us/step - loss: 1.9900 - accuracy: 0.8680 - val_loss: 0.2715 - val_accuracy: 0.9932
 Epoch 70/100
-341/341 [==============================] - 0s 107us/step - loss: 1.9770 - accuracy: 0.8680 - val_loss: 0.2823 - val_accuracy: 0.9932
+341/341 [==============================] - 0s 83us/step - loss: 1.4786 - accuracy: 0.9032 - val_loss: 0.2712 - val_accuracy: 0.9932
 Epoch 71/100
-341/341 [==============================] - 0s 119us/step - loss: 1.7124 - accuracy: 0.8651 - val_loss: 0.2783 - val_accuracy: 0.9932
+341/341 [==============================] - 0s 88us/step - loss: 1.3386 - accuracy: 0.9120 - val_loss: 0.2688 - val_accuracy: 0.9932
 Epoch 72/100
-341/341 [==============================] - 0s 164us/step - loss: 2.0627 - accuracy: 0.8651 - val_loss: 0.2740 - val_accuracy: 0.9932
+341/341 [==============================] - 0s 86us/step - loss: 1.9336 - accuracy: 0.8680 - val_loss: 0.2781 - val_accuracy: 0.9932
 Epoch 73/100
-341/341 [==============================] - 0s 142us/step - loss: 1.3899 - accuracy: 0.9062 - val_loss: 0.3696 - val_accuracy: 0.8844
+341/341 [==============================] - 0s 86us/step - loss: 1.8837 - accuracy: 0.8768 - val_loss: 0.2681 - val_accuracy: 0.9932
 Epoch 74/100
-341/341 [==============================] - 0s 135us/step - loss: 1.6650 - accuracy: 0.8944 - val_loss: 0.2793 - val_accuracy: 0.9932
+341/341 [==============================] - 0s 84us/step - loss: 1.5178 - accuracy: 0.9003 - val_loss: 0.2685 - val_accuracy: 0.9932
 Epoch 75/100
-341/341 [==============================] - 0s 491us/step - loss: 1.5797 - accuracy: 0.8974 - val_loss: 0.2871 - val_accuracy: 0.9932
+341/341 [==============================] - 0s 86us/step - loss: 1.6992 - accuracy: 0.8886 - val_loss: 0.2661 - val_accuracy: 0.9932
 Epoch 76/100
-341/341 [==============================] - 0s 245us/step - loss: 1.2518 - accuracy: 0.9150 - val_loss: 0.2897 - val_accuracy: 0.9932
+341/341 [==============================] - 0s 87us/step - loss: 1.5172 - accuracy: 0.9032 - val_loss: 0.2650 - val_accuracy: 0.9932
 Epoch 77/100
-341/341 [==============================] - 0s 122us/step - loss: 1.7908 - accuracy: 0.8827 - val_loss: 0.2675 - val_accuracy: 0.9932
+341/341 [==============================] - 0s 92us/step - loss: 1.5567 - accuracy: 0.9003 - val_loss: 0.2626 - val_accuracy: 0.9932
 Epoch 78/100
-341/341 [==============================] - 0s 122us/step - loss: 1.6607 - accuracy: 0.8886 - val_loss: 0.3039 - val_accuracy: 0.9320
+341/341 [==============================] - 0s 88us/step - loss: 2.3677 - accuracy: 0.8446 - val_loss: 0.2656 - val_accuracy: 0.9932
 Epoch 79/100
-341/341 [==============================] - 0s 137us/step - loss: 1.3437 - accuracy: 0.9120 - val_loss: 0.2721 - val_accuracy: 0.9932
+341/341 [==============================] - 0s 87us/step - loss: 1.9375 - accuracy: 0.8710 - val_loss: 0.2622 - val_accuracy: 0.9932
 Epoch 80/100
-341/341 [==============================] - 0s 127us/step - loss: 1.6362 - accuracy: 0.8974 - val_loss: 0.2711 - val_accuracy: 0.9932
+341/341 [==============================] - 0s 84us/step - loss: 1.8418 - accuracy: 0.8768 - val_loss: 0.2632 - val_accuracy: 0.9932
 Epoch 81/100
-341/341 [==============================] - 0s 122us/step - loss: 1.8501 - accuracy: 0.8739 - val_loss: 0.3003 - val_accuracy: 0.9932
+341/341 [==============================] - 0s 88us/step - loss: 1.6137 - accuracy: 0.8915 - val_loss: 0.2621 - val_accuracy: 0.9932
 Epoch 82/100
-341/341 [==============================] - 0s 125us/step - loss: 1.4412 - accuracy: 0.8974 - val_loss: 0.2677 - val_accuracy: 0.9932
+341/341 [==============================] - 0s 86us/step - loss: 1.4186 - accuracy: 0.9062 - val_loss: 0.2606 - val_accuracy: 0.9932
 Epoch 83/100
-341/341 [==============================] - 0s 162us/step - loss: 2.2859 - accuracy: 0.8475 - val_loss: 0.3719 - val_accuracy: 0.8299
+341/341 [==============================] - 0s 89us/step - loss: 1.8314 - accuracy: 0.8768 - val_loss: 0.2590 - val_accuracy: 0.9932
 Epoch 84/100
-341/341 [==============================] - 0s 133us/step - loss: 1.7921 - accuracy: 0.8827 - val_loss: 0.2649 - val_accuracy: 0.9932
+341/341 [==============================] - 0s 84us/step - loss: 1.7933 - accuracy: 0.8798 - val_loss: 0.2656 - val_accuracy: 0.9932
 Epoch 85/100
-341/341 [==============================] - 0s 131us/step - loss: 1.3870 - accuracy: 0.9032 - val_loss: 0.2696 - val_accuracy: 0.9932
+341/341 [==============================] - 0s 93us/step - loss: 2.0029 - accuracy: 0.8680 - val_loss: 0.2576 - val_accuracy: 0.9932
 Epoch 86/100
-341/341 [==============================] - 0s 128us/step - loss: 2.0689 - accuracy: 0.8651 - val_loss: 0.2728 - val_accuracy: 0.9932
+341/341 [==============================] - 0s 91us/step - loss: 1.7339 - accuracy: 0.8886 - val_loss: 0.2592 - val_accuracy: 0.9932
 Epoch 87/100
-341/341 [==============================] - 0s 139us/step - loss: 1.9146 - accuracy: 0.8768 - val_loss: 0.2670 - val_accuracy: 0.9932
+341/341 [==============================] - 0s 91us/step - loss: 1.4218 - accuracy: 0.9062 - val_loss: 0.2558 - val_accuracy: 0.9932
 Epoch 88/100
-341/341 [==============================] - 0s 112us/step - loss: 1.8668 - accuracy: 0.8768 - val_loss: 0.2587 - val_accuracy: 0.9932
+341/341 [==============================] - 0s 96us/step - loss: 1.6864 - accuracy: 0.8944 - val_loss: 0.2642 - val_accuracy: 0.9864
 Epoch 89/100
-341/341 [==============================] - 0s 104us/step - loss: 1.2858 - accuracy: 0.9179 - val_loss: 0.2785 - val_accuracy: 1.0000
+341/341 [==============================] - 0s 87us/step - loss: 1.4652 - accuracy: 0.9003 - val_loss: 0.2567 - val_accuracy: 0.9932
 Epoch 90/100
-341/341 [==============================] - 0s 129us/step - loss: 1.8794 - accuracy: 0.8768 - val_loss: 0.2603 - val_accuracy: 1.0000
+341/341 [==============================] - 0s 91us/step - loss: 1.3330 - accuracy: 0.9120 - val_loss: 0.2524 - val_accuracy: 0.9932
 Epoch 91/100
-341/341 [==============================] - 0s 108us/step - loss: 1.2914 - accuracy: 0.9179 - val_loss: 0.2709 - val_accuracy: 0.9932
+341/341 [==============================] - 0s 99us/step - loss: 1.9159 - accuracy: 0.8739 - val_loss: 0.2525 - val_accuracy: 0.9932
 Epoch 92/100
-341/341 [==============================] - 0s 128us/step - loss: 1.7775 - accuracy: 0.8856 - val_loss: 0.2811 - val_accuracy: 1.0000
+341/341 [==============================] - 0s 89us/step - loss: 1.8265 - accuracy: 0.8768 - val_loss: 0.2933 - val_accuracy: 0.9932
 Epoch 93/100
-341/341 [==============================] - 0s 810us/step - loss: 1.8725 - accuracy: 0.8739 - val_loss: 0.2923 - val_accuracy: 1.0000
+341/341 [==============================] - 0s 92us/step - loss: 1.4217 - accuracy: 0.9062 - val_loss: 0.2577 - val_accuracy: 0.9932
 Epoch 94/100
-341/341 [==============================] - 0s 297us/step - loss: 1.8655 - accuracy: 0.8798 - val_loss: 0.2509 - val_accuracy: 0.9932
+341/341 [==============================] - 0s 98us/step - loss: 1.7744 - accuracy: 0.8827 - val_loss: 0.2601 - val_accuracy: 0.9932
 Epoch 95/100
-341/341 [==============================] - 0s 147us/step - loss: 1.6000 - accuracy: 0.8944 - val_loss: 0.2468 - val_accuracy: 0.9932
+341/341 [==============================] - 0s 92us/step - loss: 1.4194 - accuracy: 0.9062 - val_loss: 0.2518 - val_accuracy: 0.9932
 Epoch 96/100
-341/341 [==============================] - 0s 149us/step - loss: 1.4985 - accuracy: 0.9032 - val_loss: 0.2508 - val_accuracy: 0.9932
+341/341 [==============================] - 0s 98us/step - loss: 1.8626 - accuracy: 0.8798 - val_loss: 0.2522 - val_accuracy: 0.9932
 Epoch 97/100
-341/341 [==============================] - 0s 138us/step - loss: 1.9185 - accuracy: 0.8123 - val_loss: 0.3777 - val_accuracy: 0.8912
+341/341 [==============================] - 0s 93us/step - loss: 2.2189 - accuracy: 0.8534 - val_loss: 0.2510 - val_accuracy: 0.9932
 Epoch 98/100
-341/341 [==============================] - 0s 250us/step - loss: 1.6357 - accuracy: 0.9003 - val_loss: 0.3561 - val_accuracy: 1.0000
+341/341 [==============================] - 0s 87us/step - loss: 1.6030 - accuracy: 0.8915 - val_loss: 0.2476 - val_accuracy: 0.9932
 Epoch 99/100
-341/341 [==============================] - 0s 151us/step - loss: 1.5834 - accuracy: 0.9062 - val_loss: 0.3540 - val_accuracy: 0.9932
+341/341 [==============================] - 0s 94us/step - loss: 1.6362 - accuracy: 0.8944 - val_loss: 0.2508 - val_accuracy: 0.9932
 Epoch 100/100
-341/341 [==============================] - 0s 158us/step - loss: 1.8939 - accuracy: 0.8798 - val_loss: 0.3457 - val_accuracy: 0.9932
+341/341 [==============================] - 0s 94us/step - loss: 1.7714 - accuracy: 0.8856 - val_loss: 0.2510 - val_accuracy: 0.9932
 </pre>
 </div>
 </div>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[24]:</div>
+    <div class="prompt output_prompt">Out[27]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;keras.callbacks.callbacks.History at 0x1a3f0d0c50&gt;</pre>
+<pre>&lt;keras.callbacks.callbacks.History at 0x1a3d7f2f98&gt;</pre>
 </div>
 
 </div>
@@ -14272,7 +14301,7 @@ Epoch 100/100
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">acc_test_over</span> <span class="o">=</span> <span class="n">model1_over</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">X_test_over</span><span class="p">,</span> <span class="n">y_test_over</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
@@ -14293,7 +14322,7 @@ Epoch 100/100
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>147/147 [==============================] - 0s 109us/step
+<pre>147/147 [==============================] - 0s 72us/step
 over-sampling test accuracy: 99.32%
 </pre>
 </div>
@@ -14318,7 +14347,7 @@ over-sampling test accuracy: 99.32%
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[29]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">############ Logistic Regression ############</span>
@@ -14331,7 +14360,7 @@ over-sampling test accuracy: 99.32%
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[90]:</div>
+<div class="prompt input_prompt">In&nbsp;[30]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <span class="n">LogisticRegression</span>
@@ -14345,11 +14374,11 @@ over-sampling test accuracy: 99.32%
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[91]:</div>
+<div class="prompt input_prompt">In&nbsp;[45]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">###### logistics on combination data</span>
-<span class="n">log_comb</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span>
+<span class="n">log_comb</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">123</span><span class="p">)</span>
 <span class="n">log_comb</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_comb</span><span class="p">,</span> <span class="n">y_train_comb</span><span class="p">)</span>
 </pre></div>
 
@@ -14375,7 +14404,7 @@ over-sampling test accuracy: 99.32%
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[91]:</div>
+    <div class="prompt output_prompt">Out[45]:</div>
 
 
 
@@ -14384,7 +14413,7 @@ over-sampling test accuracy: 99.32%
 <pre>LogisticRegression(C=1.0, class_weight=None, dual=False, fit_intercept=True,
                    intercept_scaling=1, l1_ratio=None, max_iter=100,
                    multi_class=&#39;warn&#39;, n_jobs=None, penalty=&#39;l2&#39;,
-                   random_state=None, solver=&#39;warn&#39;, tol=0.0001, verbose=0,
+                   random_state=123, solver=&#39;warn&#39;, tol=0.0001, verbose=0,
                    warm_start=False)</pre>
 </div>
 
@@ -14396,7 +14425,7 @@ over-sampling test accuracy: 99.32%
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[99]:</div>
+<div class="prompt input_prompt">In&nbsp;[46]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">y_pred_comb</span> <span class="o">=</span> <span class="n">log_comb</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_comb</span><span class="p">)</span>
@@ -14417,7 +14446,7 @@ over-sampling test accuracy: 99.32%
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>combination logistic test accuracy 99.30%
+<pre>combination logistic test accuracy 100.00%
 </pre>
 </div>
 </div>
@@ -14428,11 +14457,11 @@ over-sampling test accuracy: 99.32%
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[96]:</div>
+<div class="prompt input_prompt">In&nbsp;[43]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">##### logistics on over-sampling data</span>
-<span class="n">log_over</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span>
+<span class="n">log_over</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">123</span><span class="p">)</span>
 <span class="n">log_over</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_over</span><span class="p">,</span> <span class="n">y_train_over</span><span class="p">)</span>
 </pre></div>
 
@@ -14458,7 +14487,7 @@ over-sampling test accuracy: 99.32%
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[96]:</div>
+    <div class="prompt output_prompt">Out[43]:</div>
 
 
 
@@ -14467,7 +14496,7 @@ over-sampling test accuracy: 99.32%
 <pre>LogisticRegression(C=1.0, class_weight=None, dual=False, fit_intercept=True,
                    intercept_scaling=1, l1_ratio=None, max_iter=100,
                    multi_class=&#39;warn&#39;, n_jobs=None, penalty=&#39;l2&#39;,
-                   random_state=None, solver=&#39;warn&#39;, tol=0.0001, verbose=0,
+                   random_state=123, solver=&#39;warn&#39;, tol=0.0001, verbose=0,
                    warm_start=False)</pre>
 </div>
 
@@ -14479,7 +14508,7 @@ over-sampling test accuracy: 99.32%
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[98]:</div>
+<div class="prompt input_prompt">In&nbsp;[44]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">y_pred_over</span> <span class="o">=</span> <span class="n">log_over</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_over</span><span class="p">)</span>
@@ -14524,7 +14553,7 @@ over-sampling test accuracy: 99.32%
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[100]:</div>
+<div class="prompt input_prompt">In&nbsp;[35]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">############## Random Forest ##############</span>
@@ -14534,36 +14563,16 @@ over-sampling test accuracy: 99.32%
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>[1.        1.        0.9787234 1.        1.       ]
-0.9957446808510639
-0.008510638297872353
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[104]:</div>
+<div class="prompt input_prompt">In&nbsp;[36]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">###### random forest on combination data</span>
 <span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="k">import</span> <span class="n">RandomForestClassifier</span>
 
-<span class="n">rf_comb</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">rf_comb</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">123</span><span class="p">)</span>
 <span class="n">rf_comb</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_comb</span><span class="p">,</span><span class="n">y_train_comb</span><span class="p">)</span>
 </pre></div>
 
@@ -14571,63 +14580,13 @@ over-sampling test accuracy: 99.32%
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[112]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="n">accuracy_score</span>
-<span class="n">y_pred_comb</span> <span class="o">=</span> <span class="n">rf_comb</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_comb</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;combination test accuracy: </span><span class="si">%.2f%%</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test_comb</span><span class="p">,</span> <span class="n">y_pred_comb</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">))</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
 <div class="output_wrapper">
 <div class="output">
 
 
 <div class="output_area">
 
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>combination test accuracy: 99.30%
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[113]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">###### random forest on over-sampling data</span>
-<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="k">import</span> <span class="n">RandomForestClassifier</span>
-
-<span class="n">rf_over</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
-<span class="n">rf_over</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_over</span><span class="p">,</span><span class="n">y_train_over</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[113]:</div>
+    <div class="prompt output_prompt">Out[36]:</div>
 
 
 
@@ -14638,7 +14597,7 @@ over-sampling test accuracy: 99.32%
                        min_impurity_decrease=0.0, min_impurity_split=None,
                        min_samples_leaf=1, min_samples_split=2,
                        min_weight_fraction_leaf=0.0, n_estimators=100,
-                       n_jobs=None, oob_score=False, random_state=None,
+                       n_jobs=None, oob_score=False, random_state=123,
                        verbose=0, warm_start=False)</pre>
 </div>
 
@@ -14650,12 +14609,12 @@ over-sampling test accuracy: 99.32%
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[114]:</div>
+<div class="prompt input_prompt">In&nbsp;[37]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="n">accuracy_score</span>
-<span class="n">y_pred_over</span> <span class="o">=</span> <span class="n">rf_over</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_over</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;over-sampling test accuracy: </span><span class="si">%.2f%%</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test_over</span><span class="p">,</span> <span class="n">y_pred_over</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">))</span>
+<span class="n">y_pred_comb</span> <span class="o">=</span> <span class="n">rf_comb</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_comb</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;combination test accuracy: </span><span class="si">%.2f%%</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test_comb</span><span class="p">,</span> <span class="n">y_pred_comb</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">))</span>
 </pre></div>
 
     </div>
@@ -14683,7 +14642,83 @@ over-sampling test accuracy: 99.32%
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[38]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">###### random forest on over-sampling data</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="k">import</span> <span class="n">RandomForestClassifier</span>
+
+<span class="n">rf_over</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">123</span><span class="p">)</span>
+<span class="n">rf_over</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_over</span><span class="p">,</span><span class="n">y_train_over</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[38]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>RandomForestClassifier(bootstrap=True, class_weight=None, criterion=&#39;gini&#39;,
+                       max_depth=None, max_features=&#39;auto&#39;, max_leaf_nodes=None,
+                       min_impurity_decrease=0.0, min_impurity_split=None,
+                       min_samples_leaf=1, min_samples_split=2,
+                       min_weight_fraction_leaf=0.0, n_estimators=100,
+                       n_jobs=None, oob_score=False, random_state=123,
+                       verbose=0, warm_start=False)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[39]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="n">accuracy_score</span>
+<span class="n">y_pred_over</span> <span class="o">=</span> <span class="n">rf_over</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_over</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;over-sampling test accuracy: </span><span class="si">%.2f%%</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test_over</span><span class="p">,</span> <span class="n">y_pred_over</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>over-sampling test accuracy: 100.00%
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[40]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#### Random forest with cross-validation</span>
@@ -14697,16 +14732,16 @@ over-sampling test accuracy: 99.32%
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[116]:</div>
+<div class="prompt input_prompt">In&nbsp;[41]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## random forest model with CV on combination data</span>
 <span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="k">import</span> <span class="n">RandomForestClassifier</span>
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">cross_val_score</span>
 
-<span class="n">rfcv_comb</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">123</span><span class="p">)</span>
+<span class="c1"># rfcv_comb = RandomForestClassifier(n_estimators=100, random_state=123)</span>
 
-<span class="n">accs_comb</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><span class="n">rfcv_comb</span><span class="p">,</span> <span class="n">X</span><span class="o">=</span><span class="n">X_train_comb</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y_train_comb</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">accs_comb</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><span class="n">rf_comb</span><span class="p">,</span> <span class="n">X</span><span class="o">=</span><span class="n">X_train_comb</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y_train_comb</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">accs_comb</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">accs_comb</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
 </pre></div>
@@ -14725,8 +14760,8 @@ over-sampling test accuracy: 99.32%
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[1.        1.        0.9787234 1.        1.       ]
-0.9957446808510639
+<pre>[0.98507463 0.98507463 1.         1.         1.        ]
+0.9940298507462686
 </pre>
 </div>
 </div>
@@ -14737,16 +14772,16 @@ over-sampling test accuracy: 99.32%
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[117]:</div>
+<div class="prompt input_prompt">In&nbsp;[42]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## random forest model with CV on over-sampling data</span>
 <span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="k">import</span> <span class="n">RandomForestClassifier</span>
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">cross_val_score</span>
 
-<span class="n">rfcv_over</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">123</span><span class="p">)</span>
+<span class="c1"># rfcv_over = RandomForestClassifier(n_estimators=100, random_state=123)</span>
 
-<span class="n">accs_over</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><span class="n">rfcv_over</span><span class="p">,</span> <span class="n">X</span><span class="o">=</span><span class="n">X_train_over</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y_train_over</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">accs_over</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><span class="n">rf_over</span><span class="p">,</span> <span class="n">X</span><span class="o">=</span><span class="n">X_train_over</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y_train_over</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">accs_over</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">accs_over</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
 </pre></div>
@@ -14765,8 +14800,8 @@ over-sampling test accuracy: 99.32%
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[0.97916667 1.         0.97916667 0.97916667 0.93478261]
-0.9744565217391303
+<pre>[0.98550725 0.98529412 0.98529412 0.98529412 1.        ]
+0.9882779198635976
 </pre>
 </div>
 </div>
