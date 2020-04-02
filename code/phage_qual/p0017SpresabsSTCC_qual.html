@@ -13120,8 +13120,8 @@ div#notebook {
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## This file implements neural networks and random forest on p0017SpresabsSTCC_qual.</span>
 <span class="c1">## Due to the imbalanced data and limited cases for class 2, we implement the over-sampling method.</span>
-<span class="c1">## For fully-connected neural networks, the accuracy is 91.37% for over-sampling data and 88.83% with dropout and regularization.</span>
-<span class="c1">## For random forest, the accuracy is 96.45% for over-sampling data.</span>
+<span class="c1">## For fully-connected neural networks, the accuracy is 92.39% for over-sampling data and 90.86% with dropout and regularization.</span>
+<span class="c1">## For random forest, the accuracy is 96.95% for over-sampling data.</span>
 <span class="c1">## For random forest with cross-validation, the mean accuracy is 93.01% for over-sampling data.</span>
 </pre></div>
 
@@ -13132,7 +13132,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">numpy.random</span> <span class="k">import</span> <span class="n">seed</span>
@@ -13148,7 +13148,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -13167,7 +13167,7 @@ div#notebook {
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[2]:</div>
+    <div class="prompt output_prompt">Out[3]:</div>
 
 
 
@@ -13184,7 +13184,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Unnamed: 0&#39;</span><span class="p">:</span><span class="s1">&#39;id&#39;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -13197,7 +13197,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;pheno&#39;</span><span class="p">]</span>
@@ -13213,7 +13213,7 @@ div#notebook {
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[4]:</div>
+    <div class="prompt output_prompt">Out[5]:</div>
 
 
 
@@ -13291,7 +13291,7 @@ Name: pheno, Length: 255, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;pheno&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
@@ -13307,7 +13307,7 @@ Name: pheno, Length: 255, dtype: int64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[5]:</div>
+    <div class="prompt output_prompt">Out[6]:</div>
 
 
 
@@ -13327,7 +13327,7 @@ Name: pheno, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -13343,7 +13343,7 @@ Name: pheno, dtype: int64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[6]:</div>
+    <div class="prompt output_prompt">Out[7]:</div>
 
 
 
@@ -13524,7 +13524,7 @@ Name: pheno, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_clean</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">])</span>
@@ -13537,7 +13537,7 @@ Name: pheno, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_clean</span><span class="o">.</span><span class="n">shape</span>
@@ -13553,7 +13553,7 @@ Name: pheno, dtype: int64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[8]:</div>
+    <div class="prompt output_prompt">Out[9]:</div>
 
 
 
@@ -13570,7 +13570,7 @@ Name: pheno, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_clean</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -13586,7 +13586,7 @@ Name: pheno, dtype: int64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[9]:</div>
+    <div class="prompt output_prompt">Out[10]:</div>
 
 
 
@@ -13767,7 +13767,7 @@ Name: pheno, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">df_clean</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">df_clean</span><span class="o">.</span><span class="n">columns</span> <span class="o">!=</span> <span class="s1">&#39;pheno&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
@@ -13800,7 +13800,7 @@ Name: pheno, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># over-sampling</span>
@@ -13848,7 +13848,7 @@ Name: pheno, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># split into train, test data (over)</span>
@@ -13866,7 +13866,7 @@ Name: pheno, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">############# Fully-Connected Neural Network ################</span>
@@ -13879,7 +13879,7 @@ Name: pheno, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">keras.models</span> <span class="k">import</span> <span class="n">Sequential</span>
@@ -13896,7 +13896,7 @@ Name: pheno, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#### neural network on over-sampling data</span>
@@ -13913,7 +13913,7 @@ Name: pheno, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">model1_over</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">,</span>
@@ -13928,7 +13928,7 @@ Name: pheno, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">model1_over</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_over</span><span class="p">,</span> <span class="n">y_train_over</span><span class="p">,</span>
@@ -13952,218 +13952,218 @@ Name: pheno, dtype: int64</pre>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Train on 457 samples, validate on 197 samples
 Epoch 1/100
-457/457 [==============================] - 0s 250us/step - loss: 11.7254 - accuracy: 0.4902 - val_loss: 9.9353 - val_accuracy: 0.4467
+457/457 [==============================] - 0s 325us/step - loss: 3.2248 - accuracy: 0.3195 - val_loss: 1.4198 - val_accuracy: 0.3401
 Epoch 2/100
-457/457 [==============================] - 0s 72us/step - loss: 5.6036 - accuracy: 0.5580 - val_loss: 4.1643 - val_accuracy: 0.6599
+457/457 [==============================] - 0s 67us/step - loss: 1.2843 - accuracy: 0.4464 - val_loss: 0.9964 - val_accuracy: 0.5279
 Epoch 3/100
-457/457 [==============================] - 0s 74us/step - loss: 1.4502 - accuracy: 0.6543 - val_loss: 1.1575 - val_accuracy: 0.5127
+457/457 [==============================] - 0s 63us/step - loss: 0.9125 - accuracy: 0.7199 - val_loss: 0.6814 - val_accuracy: 0.7462
 Epoch 4/100
-457/457 [==============================] - 0s 81us/step - loss: 0.9215 - accuracy: 0.6411 - val_loss: 0.7348 - val_accuracy: 0.5330
+457/457 [==============================] - 0s 75us/step - loss: 0.6833 - accuracy: 0.6565 - val_loss: 0.5691 - val_accuracy: 0.7411
 Epoch 5/100
-457/457 [==============================] - 0s 76us/step - loss: 0.6478 - accuracy: 0.7068 - val_loss: 0.5086 - val_accuracy: 0.7766
+457/457 [==============================] - 0s 77us/step - loss: 0.5555 - accuracy: 0.7746 - val_loss: 0.5950 - val_accuracy: 0.7513
 Epoch 6/100
-457/457 [==============================] - 0s 74us/step - loss: 0.4830 - accuracy: 0.8140 - val_loss: 0.5271 - val_accuracy: 0.7919
+457/457 [==============================] - 0s 79us/step - loss: 0.5472 - accuracy: 0.8162 - val_loss: 0.7158 - val_accuracy: 0.8020
 Epoch 7/100
-457/457 [==============================] - 0s 72us/step - loss: 0.4156 - accuracy: 0.8468 - val_loss: 0.4193 - val_accuracy: 0.8223
+457/457 [==============================] - 0s 79us/step - loss: 0.5253 - accuracy: 0.7505 - val_loss: 0.5285 - val_accuracy: 0.6041
 Epoch 8/100
-457/457 [==============================] - 0s 81us/step - loss: 0.4351 - accuracy: 0.8184 - val_loss: 0.3856 - val_accuracy: 0.7970
+457/457 [==============================] - 0s 75us/step - loss: 0.4162 - accuracy: 0.8140 - val_loss: 0.4323 - val_accuracy: 0.8274
 Epoch 9/100
-457/457 [==============================] - 0s 80us/step - loss: 0.4168 - accuracy: 0.8337 - val_loss: 0.3849 - val_accuracy: 0.8020
+457/457 [==============================] - 0s 78us/step - loss: 0.3951 - accuracy: 0.8315 - val_loss: 0.4809 - val_accuracy: 0.7716
 Epoch 10/100
-457/457 [==============================] - 0s 72us/step - loss: 0.3638 - accuracy: 0.8490 - val_loss: 0.3781 - val_accuracy: 0.7970
+457/457 [==============================] - 0s 61us/step - loss: 0.4103 - accuracy: 0.8337 - val_loss: 0.3679 - val_accuracy: 0.7970
 Epoch 11/100
-457/457 [==============================] - 0s 72us/step - loss: 0.6884 - accuracy: 0.8184 - val_loss: 0.4176 - val_accuracy: 0.8274
+457/457 [==============================] - 0s 58us/step - loss: 0.3334 - accuracy: 0.8687 - val_loss: 0.3637 - val_accuracy: 0.8985
 Epoch 12/100
-457/457 [==============================] - 0s 72us/step - loss: 0.3820 - accuracy: 0.8490 - val_loss: 0.3625 - val_accuracy: 0.7868
+457/457 [==============================] - 0s 60us/step - loss: 0.4055 - accuracy: 0.8643 - val_loss: 0.5364 - val_accuracy: 0.8426
 Epoch 13/100
-457/457 [==============================] - 0s 72us/step - loss: 0.3263 - accuracy: 0.8621 - val_loss: 0.3614 - val_accuracy: 0.7970
+457/457 [==============================] - 0s 80us/step - loss: 0.4785 - accuracy: 0.8118 - val_loss: 0.3559 - val_accuracy: 0.8274
 Epoch 14/100
-457/457 [==============================] - 0s 70us/step - loss: 0.3381 - accuracy: 0.8600 - val_loss: 0.3598 - val_accuracy: 0.8274
+457/457 [==============================] - 0s 73us/step - loss: 0.3636 - accuracy: 0.8840 - val_loss: 0.3499 - val_accuracy: 0.8579
 Epoch 15/100
-457/457 [==============================] - 0s 74us/step - loss: 0.3254 - accuracy: 0.8556 - val_loss: 0.3390 - val_accuracy: 0.8426
+457/457 [==============================] - 0s 79us/step - loss: 0.3395 - accuracy: 0.8490 - val_loss: 0.3455 - val_accuracy: 0.8985
 Epoch 16/100
-457/457 [==============================] - 0s 71us/step - loss: 0.3087 - accuracy: 0.8862 - val_loss: 0.3914 - val_accuracy: 0.8325
+457/457 [==============================] - 0s 73us/step - loss: 0.3681 - accuracy: 0.8818 - val_loss: 0.5203 - val_accuracy: 0.8782
 Epoch 17/100
-457/457 [==============================] - 0s 69us/step - loss: 0.3455 - accuracy: 0.8534 - val_loss: 0.3295 - val_accuracy: 0.8579
+457/457 [==============================] - 0s 75us/step - loss: 0.4341 - accuracy: 0.8403 - val_loss: 0.9617 - val_accuracy: 0.8325
 Epoch 18/100
-457/457 [==============================] - 0s 77us/step - loss: 0.2872 - accuracy: 0.8950 - val_loss: 0.3262 - val_accuracy: 0.8731
+457/457 [==============================] - 0s 77us/step - loss: 0.5242 - accuracy: 0.8293 - val_loss: 0.3529 - val_accuracy: 0.8832
 Epoch 19/100
-457/457 [==============================] - 0s 76us/step - loss: 0.2748 - accuracy: 0.8928 - val_loss: 0.3203 - val_accuracy: 0.8426
+457/457 [==============================] - 0s 78us/step - loss: 0.3767 - accuracy: 0.8775 - val_loss: 0.3393 - val_accuracy: 0.8832
 Epoch 20/100
-457/457 [==============================] - 0s 71us/step - loss: 0.2607 - accuracy: 0.9081 - val_loss: 0.3260 - val_accuracy: 0.8426
+457/457 [==============================] - 0s 77us/step - loss: 0.2867 - accuracy: 0.8928 - val_loss: 0.3136 - val_accuracy: 0.8934
 Epoch 21/100
-457/457 [==============================] - 0s 70us/step - loss: 0.2696 - accuracy: 0.9168 - val_loss: 0.3112 - val_accuracy: 0.8680
+457/457 [==============================] - 0s 72us/step - loss: 0.2483 - accuracy: 0.9190 - val_loss: 0.3042 - val_accuracy: 0.9086
 Epoch 22/100
-457/457 [==============================] - 0s 67us/step - loss: 0.2561 - accuracy: 0.9147 - val_loss: 0.3064 - val_accuracy: 0.8680
+457/457 [==============================] - 0s 60us/step - loss: 0.2357 - accuracy: 0.9147 - val_loss: 0.2996 - val_accuracy: 0.8934
 Epoch 23/100
-457/457 [==============================] - 0s 68us/step - loss: 0.2493 - accuracy: 0.9037 - val_loss: 0.3037 - val_accuracy: 0.8832
+457/457 [==============================] - 0s 73us/step - loss: 0.2283 - accuracy: 0.9278 - val_loss: 0.2920 - val_accuracy: 0.8985
 Epoch 24/100
-457/457 [==============================] - 0s 68us/step - loss: 0.2484 - accuracy: 0.9147 - val_loss: 0.2990 - val_accuracy: 0.8629
+457/457 [==============================] - 0s 78us/step - loss: 0.2255 - accuracy: 0.9300 - val_loss: 0.2865 - val_accuracy: 0.8883
 Epoch 25/100
-457/457 [==============================] - 0s 69us/step - loss: 0.2485 - accuracy: 0.9059 - val_loss: 0.3010 - val_accuracy: 0.8426
+457/457 [==============================] - 0s 84us/step - loss: 0.2189 - accuracy: 0.9300 - val_loss: 0.2861 - val_accuracy: 0.8934
 Epoch 26/100
-457/457 [==============================] - 0s 70us/step - loss: 0.2597 - accuracy: 0.8972 - val_loss: 0.2931 - val_accuracy: 0.8782
+457/457 [==============================] - 0s 82us/step - loss: 0.2140 - accuracy: 0.9300 - val_loss: 0.2769 - val_accuracy: 0.8934
 Epoch 27/100
-457/457 [==============================] - 0s 69us/step - loss: 0.2471 - accuracy: 0.9234 - val_loss: 0.2879 - val_accuracy: 0.8832
+457/457 [==============================] - 0s 86us/step - loss: 0.2107 - accuracy: 0.9322 - val_loss: 0.2761 - val_accuracy: 0.8883
 Epoch 28/100
-457/457 [==============================] - 0s 74us/step - loss: 0.2489 - accuracy: 0.9147 - val_loss: 0.3047 - val_accuracy: 0.8832
+457/457 [==============================] - 0s 84us/step - loss: 0.2188 - accuracy: 0.9125 - val_loss: 0.2814 - val_accuracy: 0.8883
 Epoch 29/100
-457/457 [==============================] - 0s 69us/step - loss: 0.2531 - accuracy: 0.9015 - val_loss: 0.2867 - val_accuracy: 0.8579
+457/457 [==============================] - 0s 91us/step - loss: 0.2100 - accuracy: 0.9212 - val_loss: 0.2730 - val_accuracy: 0.8934
 Epoch 30/100
-457/457 [==============================] - 0s 70us/step - loss: 0.2299 - accuracy: 0.9212 - val_loss: 0.2801 - val_accuracy: 0.8832
+457/457 [==============================] - 0s 66us/step - loss: 0.2025 - accuracy: 0.9212 - val_loss: 0.2745 - val_accuracy: 0.8934
 Epoch 31/100
-457/457 [==============================] - 0s 71us/step - loss: 0.2222 - accuracy: 0.9278 - val_loss: 0.2764 - val_accuracy: 0.8782
+457/457 [==============================] - 0s 78us/step - loss: 0.1992 - accuracy: 0.9278 - val_loss: 0.2678 - val_accuracy: 0.8934
 Epoch 32/100
-457/457 [==============================] - 0s 71us/step - loss: 0.2138 - accuracy: 0.9344 - val_loss: 0.2756 - val_accuracy: 0.8985
+457/457 [==============================] - 0s 64us/step - loss: 0.1978 - accuracy: 0.9322 - val_loss: 0.2921 - val_accuracy: 0.8934
 Epoch 33/100
-457/457 [==============================] - 0s 70us/step - loss: 0.2122 - accuracy: 0.9322 - val_loss: 0.2869 - val_accuracy: 0.8782
+457/457 [==============================] - 0s 65us/step - loss: 0.1988 - accuracy: 0.9322 - val_loss: 0.2655 - val_accuracy: 0.8934
 Epoch 34/100
-457/457 [==============================] - 0s 74us/step - loss: 0.2222 - accuracy: 0.9234 - val_loss: 0.2823 - val_accuracy: 0.8731
+457/457 [==============================] - 0s 68us/step - loss: 0.1948 - accuracy: 0.9278 - val_loss: 0.2543 - val_accuracy: 0.8934
 Epoch 35/100
-457/457 [==============================] - 0s 69us/step - loss: 0.2156 - accuracy: 0.9278 - val_loss: 0.2761 - val_accuracy: 0.8782
+457/457 [==============================] - 0s 78us/step - loss: 0.2074 - accuracy: 0.9234 - val_loss: 0.2595 - val_accuracy: 0.8934
 Epoch 36/100
-457/457 [==============================] - 0s 83us/step - loss: 0.2363 - accuracy: 0.9256 - val_loss: 0.2695 - val_accuracy: 0.8985
+457/457 [==============================] - 0s 70us/step - loss: 0.1860 - accuracy: 0.9256 - val_loss: 0.2547 - val_accuracy: 0.8934
 Epoch 37/100
-457/457 [==============================] - 0s 83us/step - loss: 0.2036 - accuracy: 0.9278 - val_loss: 0.2739 - val_accuracy: 0.8832
+457/457 [==============================] - 0s 61us/step - loss: 0.1868 - accuracy: 0.9300 - val_loss: 0.2553 - val_accuracy: 0.8934
 Epoch 38/100
-457/457 [==============================] - 0s 83us/step - loss: 0.2252 - accuracy: 0.9190 - val_loss: 0.2637 - val_accuracy: 0.8782
+457/457 [==============================] - 0s 56us/step - loss: 0.1859 - accuracy: 0.9344 - val_loss: 0.2469 - val_accuracy: 0.8934
 Epoch 39/100
-457/457 [==============================] - 0s 81us/step - loss: 0.1946 - accuracy: 0.9322 - val_loss: 0.2653 - val_accuracy: 0.8883
+457/457 [==============================] - 0s 54us/step - loss: 0.1786 - accuracy: 0.9365 - val_loss: 0.2495 - val_accuracy: 0.8934
 Epoch 40/100
-457/457 [==============================] - 0s 86us/step - loss: 0.1942 - accuracy: 0.9278 - val_loss: 0.2620 - val_accuracy: 0.8883
+457/457 [==============================] - 0s 50us/step - loss: 0.1811 - accuracy: 0.9475 - val_loss: 0.2694 - val_accuracy: 0.9086
 Epoch 41/100
-457/457 [==============================] - 0s 83us/step - loss: 0.1942 - accuracy: 0.9212 - val_loss: 0.2555 - val_accuracy: 0.8934
+457/457 [==============================] - 0s 51us/step - loss: 0.1781 - accuracy: 0.9344 - val_loss: 0.2439 - val_accuracy: 0.9036
 Epoch 42/100
-457/457 [==============================] - 0s 80us/step - loss: 0.2359 - accuracy: 0.9234 - val_loss: 0.2555 - val_accuracy: 0.8832
+457/457 [==============================] - 0s 53us/step - loss: 0.3336 - accuracy: 0.9212 - val_loss: 0.4005 - val_accuracy: 0.8832
 Epoch 43/100
-457/457 [==============================] - 0s 80us/step - loss: 0.1918 - accuracy: 0.9300 - val_loss: 0.2580 - val_accuracy: 0.8985
+457/457 [==============================] - 0s 53us/step - loss: 0.2703 - accuracy: 0.8993 - val_loss: 0.2769 - val_accuracy: 0.8731
 Epoch 44/100
-457/457 [==============================] - 0s 81us/step - loss: 0.1960 - accuracy: 0.9256 - val_loss: 0.2570 - val_accuracy: 0.9036
+457/457 [==============================] - 0s 50us/step - loss: 0.2371 - accuracy: 0.9300 - val_loss: 0.2860 - val_accuracy: 0.8883
 Epoch 45/100
-457/457 [==============================] - 0s 81us/step - loss: 0.1904 - accuracy: 0.9365 - val_loss: 0.2536 - val_accuracy: 0.9188
+457/457 [==============================] - 0s 51us/step - loss: 0.2310 - accuracy: 0.9322 - val_loss: 0.2634 - val_accuracy: 0.8985
 Epoch 46/100
-457/457 [==============================] - 0s 87us/step - loss: 0.1768 - accuracy: 0.9475 - val_loss: 0.2468 - val_accuracy: 0.9036
+457/457 [==============================] - 0s 48us/step - loss: 0.1784 - accuracy: 0.9365 - val_loss: 0.2468 - val_accuracy: 0.8934
 Epoch 47/100
-457/457 [==============================] - 0s 80us/step - loss: 0.1758 - accuracy: 0.9431 - val_loss: 0.2533 - val_accuracy: 0.8883
+457/457 [==============================] - 0s 59us/step - loss: 0.1664 - accuracy: 0.9300 - val_loss: 0.2484 - val_accuracy: 0.9188
 Epoch 48/100
-457/457 [==============================] - 0s 87us/step - loss: 0.2088 - accuracy: 0.9344 - val_loss: 0.2583 - val_accuracy: 0.8985
+457/457 [==============================] - ETA: 0s - loss: 0.2946 - accuracy: 0.87 - 0s 53us/step - loss: 0.1615 - accuracy: 0.9453 - val_loss: 0.2440 - val_accuracy: 0.9036
 Epoch 49/100
-457/457 [==============================] - 0s 97us/step - loss: 0.1948 - accuracy: 0.9365 - val_loss: 0.2610 - val_accuracy: 0.8832
+457/457 [==============================] - 0s 60us/step - loss: 0.1636 - accuracy: 0.9344 - val_loss: 0.2399 - val_accuracy: 0.8985
 Epoch 50/100
-457/457 [==============================] - 0s 82us/step - loss: 0.1822 - accuracy: 0.9344 - val_loss: 0.2457 - val_accuracy: 0.8782
+457/457 [==============================] - 0s 53us/step - loss: 0.1596 - accuracy: 0.9409 - val_loss: 0.2395 - val_accuracy: 0.9137
 Epoch 51/100
-457/457 [==============================] - 0s 80us/step - loss: 0.1824 - accuracy: 0.9344 - val_loss: 0.2424 - val_accuracy: 0.9036
+457/457 [==============================] - 0s 60us/step - loss: 0.1605 - accuracy: 0.9431 - val_loss: 0.2354 - val_accuracy: 0.8985
 Epoch 52/100
-457/457 [==============================] - 0s 81us/step - loss: 0.1819 - accuracy: 0.9475 - val_loss: 0.2883 - val_accuracy: 0.9036
+457/457 [==============================] - 0s 51us/step - loss: 0.1537 - accuracy: 0.9453 - val_loss: 0.2637 - val_accuracy: 0.9086
 Epoch 53/100
-457/457 [==============================] - 0s 82us/step - loss: 0.1915 - accuracy: 0.9453 - val_loss: 0.2483 - val_accuracy: 0.8985
+457/457 [==============================] - 0s 49us/step - loss: 0.1572 - accuracy: 0.9475 - val_loss: 0.2386 - val_accuracy: 0.9137
 Epoch 54/100
-457/457 [==============================] - 0s 80us/step - loss: 0.1622 - accuracy: 0.9431 - val_loss: 0.2361 - val_accuracy: 0.9188
+457/457 [==============================] - 0s 50us/step - loss: 0.1512 - accuracy: 0.9431 - val_loss: 0.2265 - val_accuracy: 0.9137
 Epoch 55/100
-457/457 [==============================] - 0s 81us/step - loss: 0.1597 - accuracy: 0.9540 - val_loss: 0.2398 - val_accuracy: 0.9137
+457/457 [==============================] - 0s 49us/step - loss: 0.1484 - accuracy: 0.9540 - val_loss: 0.2352 - val_accuracy: 0.9289
 Epoch 56/100
-457/457 [==============================] - 0s 82us/step - loss: 0.1630 - accuracy: 0.9475 - val_loss: 0.2343 - val_accuracy: 0.9188
+457/457 [==============================] - 0s 51us/step - loss: 0.1501 - accuracy: 0.9387 - val_loss: 0.2381 - val_accuracy: 0.9239
 Epoch 57/100
-457/457 [==============================] - 0s 80us/step - loss: 0.1603 - accuracy: 0.9475 - val_loss: 0.2355 - val_accuracy: 0.8985
+457/457 [==============================] - 0s 56us/step - loss: 0.1452 - accuracy: 0.9519 - val_loss: 0.2245 - val_accuracy: 0.9239
 Epoch 58/100
-457/457 [==============================] - 0s 81us/step - loss: 0.1562 - accuracy: 0.9540 - val_loss: 0.2314 - val_accuracy: 0.9137
+457/457 [==============================] - 0s 51us/step - loss: 0.1519 - accuracy: 0.9584 - val_loss: 0.2287 - val_accuracy: 0.9289
 Epoch 59/100
-457/457 [==============================] - 0s 66us/step - loss: 0.1582 - accuracy: 0.9453 - val_loss: 0.2388 - val_accuracy: 0.9137
+457/457 [==============================] - 0s 53us/step - loss: 0.1576 - accuracy: 0.9431 - val_loss: 0.2291 - val_accuracy: 0.9239
 Epoch 60/100
-457/457 [==============================] - 0s 60us/step - loss: 0.3189 - accuracy: 0.9125 - val_loss: 0.6350 - val_accuracy: 0.8832
+457/457 [==============================] - 0s 55us/step - loss: 0.1424 - accuracy: 0.9497 - val_loss: 0.2227 - val_accuracy: 0.9442
 Epoch 61/100
-457/457 [==============================] - 0s 59us/step - loss: 0.3901 - accuracy: 0.9015 - val_loss: 0.2829 - val_accuracy: 0.8629
+457/457 [==============================] - 0s 50us/step - loss: 0.1491 - accuracy: 0.9562 - val_loss: 0.2206 - val_accuracy: 0.9239
 Epoch 62/100
-457/457 [==============================] - 0s 57us/step - loss: 0.2053 - accuracy: 0.9453 - val_loss: 0.2572 - val_accuracy: 0.9086
+457/457 [==============================] - ETA: 0s - loss: 0.0833 - accuracy: 1.00 - 0s 49us/step - loss: 0.1607 - accuracy: 0.9453 - val_loss: 0.2216 - val_accuracy: 0.9391
 Epoch 63/100
-457/457 [==============================] - 0s 57us/step - loss: 0.1804 - accuracy: 0.9497 - val_loss: 0.3466 - val_accuracy: 0.8985
+457/457 [==============================] - 0s 56us/step - loss: 0.1644 - accuracy: 0.9409 - val_loss: 0.3566 - val_accuracy: 0.9289
 Epoch 64/100
-457/457 [==============================] - 0s 60us/step - loss: 0.1747 - accuracy: 0.9431 - val_loss: 0.2386 - val_accuracy: 0.9036
+457/457 [==============================] - 0s 73us/step - loss: 0.3681 - accuracy: 0.9168 - val_loss: 0.2485 - val_accuracy: 0.8782
 Epoch 65/100
-457/457 [==============================] - 0s 57us/step - loss: 0.1547 - accuracy: 0.9562 - val_loss: 0.2295 - val_accuracy: 0.9137
+457/457 [==============================] - 0s 70us/step - loss: 0.2466 - accuracy: 0.9256 - val_loss: 0.2882 - val_accuracy: 0.9036
 Epoch 66/100
-457/457 [==============================] - 0s 65us/step - loss: 0.1569 - accuracy: 0.9453 - val_loss: 0.2576 - val_accuracy: 0.8629
+457/457 [==============================] - 0s 60us/step - loss: 0.2658 - accuracy: 0.9256 - val_loss: 0.2675 - val_accuracy: 0.9188
 Epoch 67/100
-457/457 [==============================] - 0s 67us/step - loss: 0.1787 - accuracy: 0.9497 - val_loss: 0.2395 - val_accuracy: 0.8985
+457/457 [==============================] - 0s 58us/step - loss: 0.1568 - accuracy: 0.9497 - val_loss: 0.2224 - val_accuracy: 0.9188
 Epoch 68/100
-457/457 [==============================] - 0s 58us/step - loss: 0.1580 - accuracy: 0.9300 - val_loss: 0.2259 - val_accuracy: 0.9137
+457/457 [==============================] - 0s 53us/step - loss: 0.1828 - accuracy: 0.9475 - val_loss: 0.2627 - val_accuracy: 0.9239
 Epoch 69/100
-457/457 [==============================] - 0s 57us/step - loss: 0.1503 - accuracy: 0.9475 - val_loss: 0.2264 - val_accuracy: 0.9086
+457/457 [==============================] - 0s 52us/step - loss: 0.2362 - accuracy: 0.9431 - val_loss: 0.3727 - val_accuracy: 0.9086
 Epoch 70/100
-457/457 [==============================] - 0s 58us/step - loss: 0.2031 - accuracy: 0.9344 - val_loss: 0.3394 - val_accuracy: 0.9036
+457/457 [==============================] - 0s 52us/step - loss: 0.3889 - accuracy: 0.9168 - val_loss: 0.5207 - val_accuracy: 0.8782
 Epoch 71/100
-457/457 [==============================] - 0s 64us/step - loss: 0.2608 - accuracy: 0.9322 - val_loss: 0.2318 - val_accuracy: 0.9137
+457/457 [==============================] - 0s 52us/step - loss: 0.3160 - accuracy: 0.9212 - val_loss: 0.2513 - val_accuracy: 0.9188
 Epoch 72/100
-457/457 [==============================] - 0s 59us/step - loss: 0.1531 - accuracy: 0.9431 - val_loss: 0.2448 - val_accuracy: 0.9036
+457/457 [==============================] - 0s 52us/step - loss: 0.1569 - accuracy: 0.9431 - val_loss: 0.2266 - val_accuracy: 0.9036
 Epoch 73/100
-457/457 [==============================] - 0s 59us/step - loss: 0.1380 - accuracy: 0.9562 - val_loss: 0.2221 - val_accuracy: 0.9188
+457/457 [==============================] - 0s 52us/step - loss: 0.1311 - accuracy: 0.9497 - val_loss: 0.2207 - val_accuracy: 0.9289
 Epoch 74/100
-457/457 [==============================] - 0s 58us/step - loss: 0.2203 - accuracy: 0.9344 - val_loss: 0.2641 - val_accuracy: 0.9036
+457/457 [==============================] - 0s 50us/step - loss: 0.1230 - accuracy: 0.9584 - val_loss: 0.2122 - val_accuracy: 0.9289
 Epoch 75/100
-457/457 [==============================] - 0s 65us/step - loss: 0.1869 - accuracy: 0.9365 - val_loss: 0.2284 - val_accuracy: 0.9137
+457/457 [==============================] - 0s 50us/step - loss: 0.1272 - accuracy: 0.9584 - val_loss: 0.2199 - val_accuracy: 0.9391
 Epoch 76/100
-457/457 [==============================] - 0s 60us/step - loss: 0.1403 - accuracy: 0.9562 - val_loss: 0.2119 - val_accuracy: 0.9188
+457/457 [==============================] - 0s 58us/step - loss: 0.1262 - accuracy: 0.9628 - val_loss: 0.2095 - val_accuracy: 0.9239
 Epoch 77/100
-457/457 [==============================] - 0s 59us/step - loss: 0.1272 - accuracy: 0.9672 - val_loss: 0.2213 - val_accuracy: 0.9188
+457/457 [==============================] - 0s 48us/step - loss: 0.1278 - accuracy: 0.9475 - val_loss: 0.2014 - val_accuracy: 0.9492
 Epoch 78/100
-457/457 [==============================] - 0s 56us/step - loss: 0.1314 - accuracy: 0.9584 - val_loss: 0.2092 - val_accuracy: 0.9137
+457/457 [==============================] - 0s 54us/step - loss: 0.1214 - accuracy: 0.9584 - val_loss: 0.2014 - val_accuracy: 0.9289
 Epoch 79/100
-457/457 [==============================] - 0s 60us/step - loss: 0.1316 - accuracy: 0.9584 - val_loss: 0.2061 - val_accuracy: 0.9340
+457/457 [==============================] - 0s 48us/step - loss: 0.1157 - accuracy: 0.9650 - val_loss: 0.2003 - val_accuracy: 0.9239
 Epoch 80/100
-457/457 [==============================] - 0s 57us/step - loss: 0.1300 - accuracy: 0.9584 - val_loss: 0.2196 - val_accuracy: 0.9137
+457/457 [==============================] - 0s 54us/step - loss: 0.1135 - accuracy: 0.9650 - val_loss: 0.1958 - val_accuracy: 0.9391
 Epoch 81/100
-457/457 [==============================] - 0s 58us/step - loss: 0.1273 - accuracy: 0.9628 - val_loss: 0.2090 - val_accuracy: 0.9239
+457/457 [==============================] - 0s 55us/step - loss: 0.1143 - accuracy: 0.9606 - val_loss: 0.1972 - val_accuracy: 0.9239
 Epoch 82/100
-457/457 [==============================] - 0s 72us/step - loss: 0.1241 - accuracy: 0.9606 - val_loss: 0.2154 - val_accuracy: 0.9239
+457/457 [==============================] - 0s 52us/step - loss: 0.1133 - accuracy: 0.9628 - val_loss: 0.2018 - val_accuracy: 0.9391
 Epoch 83/100
-457/457 [==============================] - 0s 59us/step - loss: 0.1288 - accuracy: 0.9519 - val_loss: 0.2108 - val_accuracy: 0.9086
+457/457 [==============================] - 0s 49us/step - loss: 0.1142 - accuracy: 0.9694 - val_loss: 0.1989 - val_accuracy: 0.9391
 Epoch 84/100
-457/457 [==============================] - 0s 55us/step - loss: 0.1197 - accuracy: 0.9694 - val_loss: 0.2138 - val_accuracy: 0.9239
+457/457 [==============================] - 0s 57us/step - loss: 0.1109 - accuracy: 0.9716 - val_loss: 0.1929 - val_accuracy: 0.9239
 Epoch 85/100
-457/457 [==============================] - 0s 56us/step - loss: 0.1218 - accuracy: 0.9650 - val_loss: 0.2060 - val_accuracy: 0.9137
+457/457 [==============================] - 0s 50us/step - loss: 0.1078 - accuracy: 0.9650 - val_loss: 0.1954 - val_accuracy: 0.9239
 Epoch 86/100
-457/457 [==============================] - 0s 60us/step - loss: 0.1196 - accuracy: 0.9628 - val_loss: 0.2069 - val_accuracy: 0.9188
+457/457 [==============================] - 0s 54us/step - loss: 0.1077 - accuracy: 0.9650 - val_loss: 0.2000 - val_accuracy: 0.9340
 Epoch 87/100
-457/457 [==============================] - 0s 57us/step - loss: 0.1221 - accuracy: 0.9606 - val_loss: 0.1999 - val_accuracy: 0.9137
+457/457 [==============================] - 0s 50us/step - loss: 0.1092 - accuracy: 0.9672 - val_loss: 0.1936 - val_accuracy: 0.9340
 Epoch 88/100
-457/457 [==============================] - 0s 55us/step - loss: 0.1794 - accuracy: 0.9497 - val_loss: 0.2526 - val_accuracy: 0.8934
+457/457 [==============================] - 0s 52us/step - loss: 0.1069 - accuracy: 0.9672 - val_loss: 0.1948 - val_accuracy: 0.9340
 Epoch 89/100
-457/457 [==============================] - 0s 65us/step - loss: 0.1231 - accuracy: 0.9650 - val_loss: 0.2002 - val_accuracy: 0.9340
+457/457 [==============================] - 0s 51us/step - loss: 0.1068 - accuracy: 0.9694 - val_loss: 0.1879 - val_accuracy: 0.9442
 Epoch 90/100
-457/457 [==============================] - 0s 75us/step - loss: 0.1688 - accuracy: 0.9584 - val_loss: 0.2086 - val_accuracy: 0.9086
+457/457 [==============================] - 0s 50us/step - loss: 0.1060 - accuracy: 0.9694 - val_loss: 0.1821 - val_accuracy: 0.9391
 Epoch 91/100
-457/457 [==============================] - 0s 59us/step - loss: 0.3448 - accuracy: 0.9344 - val_loss: 0.5257 - val_accuracy: 0.8832
+457/457 [==============================] - 0s 49us/step - loss: 0.1118 - accuracy: 0.9672 - val_loss: 0.2144 - val_accuracy: 0.9239
 Epoch 92/100
-457/457 [==============================] - 0s 58us/step - loss: 0.3323 - accuracy: 0.9256 - val_loss: 0.2700 - val_accuracy: 0.8985
+457/457 [==============================] - 0s 50us/step - loss: 0.1093 - accuracy: 0.9694 - val_loss: 0.1806 - val_accuracy: 0.9289
 Epoch 93/100
-457/457 [==============================] - 0s 57us/step - loss: 0.1307 - accuracy: 0.9584 - val_loss: 0.2442 - val_accuracy: 0.9036
+457/457 [==============================] - 0s 53us/step - loss: 0.1040 - accuracy: 0.9694 - val_loss: 0.1837 - val_accuracy: 0.9442
 Epoch 94/100
-457/457 [==============================] - 0s 58us/step - loss: 0.1225 - accuracy: 0.9650 - val_loss: 0.2068 - val_accuracy: 0.9137
+457/457 [==============================] - 0s 55us/step - loss: 0.1070 - accuracy: 0.9759 - val_loss: 0.1959 - val_accuracy: 0.9442
 Epoch 95/100
-457/457 [==============================] - 0s 59us/step - loss: 0.1358 - accuracy: 0.9562 - val_loss: 0.2281 - val_accuracy: 0.9137
+457/457 [==============================] - 0s 54us/step - loss: 0.2470 - accuracy: 0.9409 - val_loss: 0.3806 - val_accuracy: 0.9137
 Epoch 96/100
-457/457 [==============================] - 0s 55us/step - loss: 0.1219 - accuracy: 0.9628 - val_loss: 0.2019 - val_accuracy: 0.9188
+457/457 [==============================] - 0s 57us/step - loss: 0.1749 - accuracy: 0.9584 - val_loss: 0.2207 - val_accuracy: 0.9188
 Epoch 97/100
-457/457 [==============================] - 0s 55us/step - loss: 0.1095 - accuracy: 0.9737 - val_loss: 0.1985 - val_accuracy: 0.9086
+457/457 [==============================] - 0s 55us/step - loss: 0.1034 - accuracy: 0.9672 - val_loss: 0.1878 - val_accuracy: 0.9086
 Epoch 98/100
-457/457 [==============================] - 0s 59us/step - loss: 0.1070 - accuracy: 0.9694 - val_loss: 0.2025 - val_accuracy: 0.9137
+457/457 [==============================] - 0s 49us/step - loss: 0.1016 - accuracy: 0.9716 - val_loss: 0.2013 - val_accuracy: 0.9289
 Epoch 99/100
-457/457 [==============================] - 0s 55us/step - loss: 0.1053 - accuracy: 0.9694 - val_loss: 0.1988 - val_accuracy: 0.9137
+457/457 [==============================] - 0s 58us/step - loss: 0.0974 - accuracy: 0.9694 - val_loss: 0.1884 - val_accuracy: 0.9289
 Epoch 100/100
-457/457 [==============================] - 0s 56us/step - loss: 0.1049 - accuracy: 0.9716 - val_loss: 0.2003 - val_accuracy: 0.9137
+457/457 [==============================] - 0s 53us/step - loss: 0.1032 - accuracy: 0.9716 - val_loss: 0.1985 - val_accuracy: 0.9239
 </pre>
 </div>
 </div>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[29]:</div>
+    <div class="prompt output_prompt">Out[18]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;keras.callbacks.callbacks.History at 0x1a3b4bbcf8&gt;</pre>
+<pre>&lt;keras.callbacks.callbacks.History at 0x1a3a5ee2b0&gt;</pre>
 </div>
 
 </div>
@@ -14174,7 +14174,7 @@ Epoch 100/100
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[30]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">acc_test_over</span> <span class="o">=</span> <span class="n">model1_over</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">X_test_over</span><span class="p">,</span> <span class="n">y_test_over</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
@@ -14195,8 +14195,8 @@ Epoch 100/100
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>197/197 [==============================] - 0s 101us/step
-over-sampling test accuracy: 91.37%
+<pre>197/197 [==============================] - 0s 72us/step
+over-sampling test accuracy: 92.39%
 </pre>
 </div>
 </div>
@@ -14207,7 +14207,7 @@ over-sampling test accuracy: 91.37%
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[31]:</div>
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#### add dropout and regularizer</span>
@@ -14226,7 +14226,7 @@ over-sampling test accuracy: 91.37%
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[32]:</div>
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">model1_over2</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">,</span>
@@ -14241,7 +14241,7 @@ over-sampling test accuracy: 91.37%
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[33]:</div>
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">model1_over2</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_over</span><span class="p">,</span> <span class="n">y_train_over</span><span class="p">,</span>
@@ -14265,218 +14265,218 @@ over-sampling test accuracy: 91.37%
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Train on 457 samples, validate on 197 samples
 Epoch 1/100
-457/457 [==============================] - 0s 427us/step - loss: 11.8559 - accuracy: 0.3392 - val_loss: 10.6516 - val_accuracy: 0.3046
+457/457 [==============================] - 0s 419us/step - loss: 12.4846 - accuracy: 0.4026 - val_loss: 9.9383 - val_accuracy: 0.5482
 Epoch 2/100
-457/457 [==============================] - 0s 90us/step - loss: 11.4729 - accuracy: 0.4004 - val_loss: 9.0253 - val_accuracy: 0.5076
+457/457 [==============================] - 0s 71us/step - loss: 10.6719 - accuracy: 0.5164 - val_loss: 7.7851 - val_accuracy: 0.5127
 Epoch 3/100
-457/457 [==============================] - 0s 81us/step - loss: 9.6839 - accuracy: 0.5142 - val_loss: 7.6035 - val_accuracy: 0.5736
+457/457 [==============================] - 0s 71us/step - loss: 9.4695 - accuracy: 0.5624 - val_loss: 6.4051 - val_accuracy: 0.6497
 Epoch 4/100
-457/457 [==============================] - 0s 86us/step - loss: 8.9622 - accuracy: 0.5295 - val_loss: 6.9814 - val_accuracy: 0.5431
+457/457 [==============================] - 0s 70us/step - loss: 8.5720 - accuracy: 0.5098 - val_loss: 5.3466 - val_accuracy: 0.7157
 Epoch 5/100
-457/457 [==============================] - 0s 83us/step - loss: 8.1847 - accuracy: 0.5033 - val_loss: 6.1899 - val_accuracy: 0.5431
+457/457 [==============================] - 0s 69us/step - loss: 7.8174 - accuracy: 0.6039 - val_loss: 4.6412 - val_accuracy: 0.5279
 Epoch 6/100
-457/457 [==============================] - 0s 83us/step - loss: 7.5786 - accuracy: 0.5274 - val_loss: 5.6494 - val_accuracy: 0.5431
+457/457 [==============================] - 0s 69us/step - loss: 7.0489 - accuracy: 0.6193 - val_loss: 4.1300 - val_accuracy: 0.7259
 Epoch 7/100
-457/457 [==============================] - 0s 99us/step - loss: 6.9898 - accuracy: 0.5011 - val_loss: 3.9660 - val_accuracy: 0.5178
+457/457 [==============================] - 0s 75us/step - loss: 6.6414 - accuracy: 0.6433 - val_loss: 3.4554 - val_accuracy: 0.7665
 Epoch 8/100
-457/457 [==============================] - 0s 85us/step - loss: 5.3529 - accuracy: 0.5295 - val_loss: 2.1492 - val_accuracy: 0.6497
+457/457 [==============================] - 0s 71us/step - loss: 5.7315 - accuracy: 0.6783 - val_loss: 3.0538 - val_accuracy: 0.7970
 Epoch 9/100
-457/457 [==============================] - 0s 79us/step - loss: 4.7267 - accuracy: 0.5908 - val_loss: 1.7229 - val_accuracy: 0.6954
+457/457 [==============================] - 0s 70us/step - loss: 5.6135 - accuracy: 0.6674 - val_loss: 2.7404 - val_accuracy: 0.7563
 Epoch 10/100
-457/457 [==============================] - 0s 80us/step - loss: 4.0245 - accuracy: 0.6652 - val_loss: 1.4073 - val_accuracy: 0.6904
+457/457 [==============================] - 0s 65us/step - loss: 5.4729 - accuracy: 0.6499 - val_loss: 2.5228 - val_accuracy: 0.7411
 Epoch 11/100
-457/457 [==============================] - 0s 85us/step - loss: 3.9117 - accuracy: 0.6083 - val_loss: 1.2374 - val_accuracy: 0.7563
+457/457 [==============================] - 0s 67us/step - loss: 5.1012 - accuracy: 0.6455 - val_loss: 2.2039 - val_accuracy: 0.7970
 Epoch 12/100
-457/457 [==============================] - 0s 95us/step - loss: 3.9569 - accuracy: 0.6389 - val_loss: 1.0676 - val_accuracy: 0.7462
+457/457 [==============================] - 0s 73us/step - loss: 4.4185 - accuracy: 0.7133 - val_loss: 2.0501 - val_accuracy: 0.8325
 Epoch 13/100
-457/457 [==============================] - 0s 87us/step - loss: 3.4457 - accuracy: 0.6521 - val_loss: 0.9633 - val_accuracy: 0.7868
+457/457 [==============================] - 0s 69us/step - loss: 3.8151 - accuracy: 0.7221 - val_loss: 1.8615 - val_accuracy: 0.7868
 Epoch 14/100
-457/457 [==============================] - 0s 79us/step - loss: 3.4973 - accuracy: 0.6565 - val_loss: 0.8571 - val_accuracy: 0.7970
+457/457 [==============================] - 0s 65us/step - loss: 4.2914 - accuracy: 0.6740 - val_loss: 1.7308 - val_accuracy: 0.7970
 Epoch 15/100
-457/457 [==============================] - 0s 79us/step - loss: 3.0892 - accuracy: 0.6740 - val_loss: 0.7766 - val_accuracy: 0.7665
+457/457 [==============================] - 0s 77us/step - loss: 4.1344 - accuracy: 0.6761 - val_loss: 1.6272 - val_accuracy: 0.8122
 Epoch 16/100
-457/457 [==============================] - 0s 79us/step - loss: 2.6149 - accuracy: 0.6980 - val_loss: 0.7575 - val_accuracy: 0.7462
+457/457 [==============================] - 0s 72us/step - loss: 3.5031 - accuracy: 0.6805 - val_loss: 1.5468 - val_accuracy: 0.7919
 Epoch 17/100
-457/457 [==============================] - 0s 107us/step - loss: 2.7128 - accuracy: 0.6915 - val_loss: 0.7449 - val_accuracy: 0.7919
+457/457 [==============================] - 0s 63us/step - loss: 3.8193 - accuracy: 0.6740 - val_loss: 1.4789 - val_accuracy: 0.7970
 Epoch 18/100
-457/457 [==============================] - 0s 82us/step - loss: 2.6705 - accuracy: 0.6674 - val_loss: 0.7151 - val_accuracy: 0.7766
+457/457 [==============================] - 0s 64us/step - loss: 3.1977 - accuracy: 0.7155 - val_loss: 1.3257 - val_accuracy: 0.8020
 Epoch 19/100
-457/457 [==============================] - 0s 82us/step - loss: 2.8605 - accuracy: 0.6980 - val_loss: 0.6708 - val_accuracy: 0.7970
+457/457 [==============================] - 0s 66us/step - loss: 3.5942 - accuracy: 0.6499 - val_loss: 1.3481 - val_accuracy: 0.8173
 Epoch 20/100
-457/457 [==============================] - 0s 82us/step - loss: 3.2140 - accuracy: 0.6477 - val_loss: 0.6739 - val_accuracy: 0.7919
+457/457 [==============================] - 0s 63us/step - loss: 3.1827 - accuracy: 0.6871 - val_loss: 1.2272 - val_accuracy: 0.8173
 Epoch 21/100
-457/457 [==============================] - 0s 80us/step - loss: 2.3648 - accuracy: 0.6980 - val_loss: 0.6776 - val_accuracy: 0.7766
+457/457 [==============================] - 0s 63us/step - loss: 2.7339 - accuracy: 0.7133 - val_loss: 1.1279 - val_accuracy: 0.8071
 Epoch 22/100
-457/457 [==============================] - 0s 81us/step - loss: 2.3829 - accuracy: 0.7068 - val_loss: 0.6466 - val_accuracy: 0.7970
+457/457 [==============================] - 0s 61us/step - loss: 2.9005 - accuracy: 0.6849 - val_loss: 1.1688 - val_accuracy: 0.8223
 Epoch 23/100
-457/457 [==============================] - 0s 80us/step - loss: 2.3941 - accuracy: 0.7396 - val_loss: 0.6465 - val_accuracy: 0.8071
+457/457 [==============================] - 0s 62us/step - loss: 2.9143 - accuracy: 0.7090 - val_loss: 1.0491 - val_accuracy: 0.8426
 Epoch 24/100
-457/457 [==============================] - 0s 79us/step - loss: 2.4485 - accuracy: 0.7221 - val_loss: 0.6159 - val_accuracy: 0.8426
+457/457 [==============================] - 0s 68us/step - loss: 2.9682 - accuracy: 0.6783 - val_loss: 0.9988 - val_accuracy: 0.8629
 Epoch 25/100
-457/457 [==============================] - 0s 79us/step - loss: 2.6403 - accuracy: 0.7133 - val_loss: 0.6190 - val_accuracy: 0.8274
+457/457 [==============================] - 0s 68us/step - loss: 2.9159 - accuracy: 0.6740 - val_loss: 1.0104 - val_accuracy: 0.8325
 Epoch 26/100
-457/457 [==============================] - 0s 81us/step - loss: 2.4216 - accuracy: 0.7112 - val_loss: 0.6423 - val_accuracy: 0.8426
+457/457 [==============================] - 0s 67us/step - loss: 2.7328 - accuracy: 0.7133 - val_loss: 1.0067 - val_accuracy: 0.8680
 Epoch 27/100
-457/457 [==============================] - 0s 79us/step - loss: 2.5138 - accuracy: 0.7024 - val_loss: 0.6458 - val_accuracy: 0.8173
+457/457 [==============================] - 0s 67us/step - loss: 2.8193 - accuracy: 0.6915 - val_loss: 1.0750 - val_accuracy: 0.8071
 Epoch 28/100
-457/457 [==============================] - 0s 79us/step - loss: 2.1904 - accuracy: 0.7309 - val_loss: 0.6581 - val_accuracy: 0.8528
+457/457 [==============================] - 0s 65us/step - loss: 2.5356 - accuracy: 0.7090 - val_loss: 0.9798 - val_accuracy: 0.8579
 Epoch 29/100
-457/457 [==============================] - 0s 80us/step - loss: 2.4641 - accuracy: 0.7133 - val_loss: 0.6736 - val_accuracy: 0.8376
+457/457 [==============================] - 0s 64us/step - loss: 2.5302 - accuracy: 0.6783 - val_loss: 0.9976 - val_accuracy: 0.8629
 Epoch 30/100
-457/457 [==============================] - 0s 86us/step - loss: 2.3508 - accuracy: 0.7243 - val_loss: 0.6991 - val_accuracy: 0.8528
+457/457 [==============================] - 0s 62us/step - loss: 2.1592 - accuracy: 0.7330 - val_loss: 0.9027 - val_accuracy: 0.8629
 Epoch 31/100
-457/457 [==============================] - 0s 80us/step - loss: 2.2625 - accuracy: 0.7221 - val_loss: 0.7082 - val_accuracy: 0.8426
+457/457 [==============================] - 0s 64us/step - loss: 2.4168 - accuracy: 0.6805 - val_loss: 0.9740 - val_accuracy: 0.8325
 Epoch 32/100
-457/457 [==============================] - 0s 81us/step - loss: 1.9018 - accuracy: 0.6958 - val_loss: 0.7158 - val_accuracy: 0.8731
+457/457 [==============================] - 0s 61us/step - loss: 2.0149 - accuracy: 0.7309 - val_loss: 0.9096 - val_accuracy: 0.8680
 Epoch 33/100
-457/457 [==============================] - 0s 79us/step - loss: 2.4598 - accuracy: 0.6937 - val_loss: 0.7100 - val_accuracy: 0.8528
+457/457 [==============================] - 0s 67us/step - loss: 1.8881 - accuracy: 0.7527 - val_loss: 0.8425 - val_accuracy: 0.8731
 Epoch 34/100
-457/457 [==============================] - 0s 79us/step - loss: 2.0813 - accuracy: 0.6849 - val_loss: 0.7402 - val_accuracy: 0.7970
+457/457 [==============================] - 0s 66us/step - loss: 2.0461 - accuracy: 0.7440 - val_loss: 0.8673 - val_accuracy: 0.8122
 Epoch 35/100
-457/457 [==============================] - 0s 80us/step - loss: 2.1453 - accuracy: 0.7068 - val_loss: 0.6552 - val_accuracy: 0.8579
+457/457 [==============================] - 0s 65us/step - loss: 2.0004 - accuracy: 0.7265 - val_loss: 0.9231 - val_accuracy: 0.8579
 Epoch 36/100
-457/457 [==============================] - 0s 97us/step - loss: 1.9542 - accuracy: 0.6937 - val_loss: 0.6721 - val_accuracy: 0.8274
+457/457 [==============================] - 0s 64us/step - loss: 2.2658 - accuracy: 0.7046 - val_loss: 0.9448 - val_accuracy: 0.8426
 Epoch 37/100
-457/457 [==============================] - 0s 96us/step - loss: 2.1078 - accuracy: 0.6958 - val_loss: 0.6354 - val_accuracy: 0.8426
+457/457 [==============================] - 0s 61us/step - loss: 2.0182 - accuracy: 0.7133 - val_loss: 0.8742 - val_accuracy: 0.8223
 Epoch 38/100
-457/457 [==============================] - 0s 98us/step - loss: 1.6733 - accuracy: 0.7615 - val_loss: 0.6500 - val_accuracy: 0.8325
+457/457 [==============================] - 0s 62us/step - loss: 2.1240 - accuracy: 0.7265 - val_loss: 0.7942 - val_accuracy: 0.8832
 Epoch 39/100
-457/457 [==============================] - 0s 120us/step - loss: 1.9237 - accuracy: 0.6980 - val_loss: 0.8687 - val_accuracy: 0.8477
+457/457 [==============================] - 0s 62us/step - loss: 1.7947 - accuracy: 0.7177 - val_loss: 0.8416 - val_accuracy: 0.8629
 Epoch 40/100
-457/457 [==============================] - 0s 123us/step - loss: 2.0307 - accuracy: 0.7090 - val_loss: 0.6705 - val_accuracy: 0.8579
+457/457 [==============================] - 0s 60us/step - loss: 1.7807 - accuracy: 0.7243 - val_loss: 0.8128 - val_accuracy: 0.8680
 Epoch 41/100
-457/457 [==============================] - 0s 88us/step - loss: 1.8100 - accuracy: 0.7265 - val_loss: 0.6319 - val_accuracy: 0.8782
+457/457 [==============================] - 0s 65us/step - loss: 2.2316 - accuracy: 0.7155 - val_loss: 0.8231 - val_accuracy: 0.8477
 Epoch 42/100
-457/457 [==============================] - 0s 89us/step - loss: 1.8887 - accuracy: 0.7221 - val_loss: 0.6369 - val_accuracy: 0.8274
+457/457 [==============================] - 0s 66us/step - loss: 1.8681 - accuracy: 0.7330 - val_loss: 1.0226 - val_accuracy: 0.8680
 Epoch 43/100
-457/457 [==============================] - 0s 105us/step - loss: 2.0608 - accuracy: 0.6871 - val_loss: 0.6661 - val_accuracy: 0.8832
+457/457 [==============================] - 0s 61us/step - loss: 2.1959 - accuracy: 0.7133 - val_loss: 0.7867 - val_accuracy: 0.8325
 Epoch 44/100
-457/457 [==============================] - 0s 91us/step - loss: 1.8993 - accuracy: 0.7265 - val_loss: 0.8708 - val_accuracy: 0.7970
+457/457 [==============================] - 0s 63us/step - loss: 1.8121 - accuracy: 0.7418 - val_loss: 0.7867 - val_accuracy: 0.8782
 Epoch 45/100
-457/457 [==============================] - 0s 91us/step - loss: 1.8484 - accuracy: 0.7309 - val_loss: 0.6040 - val_accuracy: 0.8376
+457/457 [==============================] - 0s 63us/step - loss: 1.9099 - accuracy: 0.7396 - val_loss: 0.7514 - val_accuracy: 0.8782
 Epoch 46/100
-457/457 [==============================] - 0s 86us/step - loss: 1.9670 - accuracy: 0.6937 - val_loss: 0.6812 - val_accuracy: 0.8731
+457/457 [==============================] - 0s 60us/step - loss: 2.0063 - accuracy: 0.7243 - val_loss: 0.7120 - val_accuracy: 0.8883
 Epoch 47/100
-457/457 [==============================] - 0s 89us/step - loss: 1.5019 - accuracy: 0.7265 - val_loss: 0.6910 - val_accuracy: 0.8173
+457/457 [==============================] - 0s 60us/step - loss: 1.7643 - accuracy: 0.7440 - val_loss: 0.7770 - val_accuracy: 0.8731
 Epoch 48/100
-457/457 [==============================] - 0s 97us/step - loss: 1.5922 - accuracy: 0.7659 - val_loss: 0.6319 - val_accuracy: 0.8325
+457/457 [==============================] - 0s 58us/step - loss: 1.9443 - accuracy: 0.7002 - val_loss: 0.7057 - val_accuracy: 0.8832
 Epoch 49/100
-457/457 [==============================] - 0s 86us/step - loss: 1.6390 - accuracy: 0.7505 - val_loss: 0.6283 - val_accuracy: 0.8883
+457/457 [==============================] - 0s 60us/step - loss: 1.9360 - accuracy: 0.7418 - val_loss: 0.8572 - val_accuracy: 0.8782
 Epoch 50/100
-457/457 [==============================] - 0s 88us/step - loss: 1.6523 - accuracy: 0.7418 - val_loss: 0.7240 - val_accuracy: 0.8071
+457/457 [==============================] - 0s 62us/step - loss: 1.7790 - accuracy: 0.7221 - val_loss: 0.9975 - val_accuracy: 0.8477
 Epoch 51/100
-457/457 [==============================] - 0s 90us/step - loss: 1.6106 - accuracy: 0.7090 - val_loss: 0.6378 - val_accuracy: 0.8629
+457/457 [==============================] - 0s 61us/step - loss: 1.9102 - accuracy: 0.7330 - val_loss: 0.8886 - val_accuracy: 0.8883
 Epoch 52/100
-457/457 [==============================] - 0s 92us/step - loss: 1.5213 - accuracy: 0.7484 - val_loss: 0.7616 - val_accuracy: 0.8426
+457/457 [==============================] - 0s 60us/step - loss: 1.9799 - accuracy: 0.7155 - val_loss: 0.8842 - val_accuracy: 0.8528
 Epoch 53/100
-457/457 [==============================] - 0s 90us/step - loss: 1.7931 - accuracy: 0.7462 - val_loss: 0.6967 - val_accuracy: 0.9036
+457/457 [==============================] - 0s 62us/step - loss: 1.7328 - accuracy: 0.7090 - val_loss: 1.0669 - val_accuracy: 0.8731
 Epoch 54/100
-457/457 [==============================] - 0s 92us/step - loss: 1.5680 - accuracy: 0.7724 - val_loss: 0.6700 - val_accuracy: 0.8832
+457/457 [==============================] - 0s 62us/step - loss: 1.6003 - accuracy: 0.7549 - val_loss: 0.9969 - val_accuracy: 0.8985
 Epoch 55/100
-457/457 [==============================] - 0s 94us/step - loss: 1.6140 - accuracy: 0.7133 - val_loss: 0.8494 - val_accuracy: 0.8782
+457/457 [==============================] - 0s 62us/step - loss: 1.5635 - accuracy: 0.7396 - val_loss: 0.8372 - val_accuracy: 0.8629
 Epoch 56/100
-457/457 [==============================] - 0s 92us/step - loss: 1.4097 - accuracy: 0.7243 - val_loss: 0.5977 - val_accuracy: 0.8680
+457/457 [==============================] - 0s 61us/step - loss: 1.5484 - accuracy: 0.7484 - val_loss: 0.9086 - val_accuracy: 0.8274
 Epoch 57/100
-457/457 [==============================] - 0s 92us/step - loss: 1.6266 - accuracy: 0.7615 - val_loss: 0.6729 - val_accuracy: 0.8629
+457/457 [==============================] - 0s 64us/step - loss: 1.9290 - accuracy: 0.7287 - val_loss: 0.8682 - val_accuracy: 0.8832
 Epoch 58/100
-457/457 [==============================] - 0s 82us/step - loss: 1.5060 - accuracy: 0.7505 - val_loss: 0.7213 - val_accuracy: 0.8477
+457/457 [==============================] - 0s 63us/step - loss: 1.6305 - accuracy: 0.7462 - val_loss: 0.8880 - val_accuracy: 0.8680
 Epoch 59/100
-457/457 [==============================] - 0s 76us/step - loss: 1.3631 - accuracy: 0.7637 - val_loss: 0.5756 - val_accuracy: 0.8934
+457/457 [==============================] - 0s 60us/step - loss: 1.6629 - accuracy: 0.7374 - val_loss: 0.7503 - val_accuracy: 0.8883
 Epoch 60/100
-457/457 [==============================] - 0s 71us/step - loss: 1.5783 - accuracy: 0.7352 - val_loss: 0.7279 - val_accuracy: 0.8071
+457/457 [==============================] - 0s 60us/step - loss: 1.4447 - accuracy: 0.7527 - val_loss: 0.7378 - val_accuracy: 0.8934
 Epoch 61/100
-457/457 [==============================] - 0s 85us/step - loss: 1.5349 - accuracy: 0.7593 - val_loss: 0.7424 - val_accuracy: 0.8782
+457/457 [==============================] - 0s 59us/step - loss: 1.5071 - accuracy: 0.7571 - val_loss: 0.6849 - val_accuracy: 0.9086
 Epoch 62/100
-457/457 [==============================] - 0s 66us/step - loss: 1.7797 - accuracy: 0.7309 - val_loss: 0.6810 - val_accuracy: 0.8680
+457/457 [==============================] - 0s 64us/step - loss: 1.5674 - accuracy: 0.7352 - val_loss: 0.7088 - val_accuracy: 0.9137
 Epoch 63/100
-457/457 [==============================] - 0s 65us/step - loss: 1.8839 - accuracy: 0.7265 - val_loss: 0.8435 - val_accuracy: 0.8832
+457/457 [==============================] - 0s 60us/step - loss: 1.5738 - accuracy: 0.7571 - val_loss: 0.7654 - val_accuracy: 0.8832
 Epoch 64/100
-457/457 [==============================] - 0s 66us/step - loss: 1.7441 - accuracy: 0.7177 - val_loss: 0.5982 - val_accuracy: 0.8985
+457/457 [==============================] - 0s 61us/step - loss: 1.4968 - accuracy: 0.7615 - val_loss: 1.0840 - val_accuracy: 0.9036
 Epoch 65/100
-457/457 [==============================] - 0s 69us/step - loss: 1.5279 - accuracy: 0.7549 - val_loss: 0.6358 - val_accuracy: 0.9036
+457/457 [==============================] - 0s 63us/step - loss: 1.6799 - accuracy: 0.7484 - val_loss: 0.8795 - val_accuracy: 0.8934
 Epoch 66/100
-457/457 [==============================] - 0s 69us/step - loss: 1.4792 - accuracy: 0.7637 - val_loss: 0.9574 - val_accuracy: 0.8680
+457/457 [==============================] - 0s 61us/step - loss: 1.7423 - accuracy: 0.7177 - val_loss: 0.9847 - val_accuracy: 0.8832
 Epoch 67/100
-457/457 [==============================] - 0s 79us/step - loss: 1.5390 - accuracy: 0.7309 - val_loss: 0.6487 - val_accuracy: 0.9086
+457/457 [==============================] - 0s 60us/step - loss: 1.8325 - accuracy: 0.7265 - val_loss: 0.7599 - val_accuracy: 0.9036
 Epoch 68/100
-457/457 [==============================] - 0s 72us/step - loss: 1.5146 - accuracy: 0.7287 - val_loss: 0.6705 - val_accuracy: 0.8782
+457/457 [==============================] - 0s 60us/step - loss: 1.5042 - accuracy: 0.7396 - val_loss: 0.7890 - val_accuracy: 0.8883
 Epoch 69/100
-457/457 [==============================] - 0s 75us/step - loss: 1.5273 - accuracy: 0.7549 - val_loss: 0.7496 - val_accuracy: 0.8832
+457/457 [==============================] - 0s 60us/step - loss: 1.5362 - accuracy: 0.7571 - val_loss: 0.7633 - val_accuracy: 0.9036
 Epoch 70/100
-457/457 [==============================] - 0s 71us/step - loss: 1.6607 - accuracy: 0.7265 - val_loss: 0.7926 - val_accuracy: 0.9036
+457/457 [==============================] - 0s 62us/step - loss: 1.8673 - accuracy: 0.7352 - val_loss: 1.1983 - val_accuracy: 0.8985
 Epoch 71/100
-457/457 [==============================] - 0s 65us/step - loss: 1.7230 - accuracy: 0.7287 - val_loss: 0.7302 - val_accuracy: 0.9239
+457/457 [==============================] - 0s 60us/step - loss: 1.6759 - accuracy: 0.7462 - val_loss: 0.9393 - val_accuracy: 0.8629
 Epoch 72/100
-457/457 [==============================] - 0s 66us/step - loss: 1.5434 - accuracy: 0.7396 - val_loss: 0.8050 - val_accuracy: 0.8832
+457/457 [==============================] - 0s 64us/step - loss: 1.6569 - accuracy: 0.7396 - val_loss: 0.8241 - val_accuracy: 0.8985
 Epoch 73/100
-457/457 [==============================] - 0s 65us/step - loss: 1.4616 - accuracy: 0.7571 - val_loss: 0.6738 - val_accuracy: 0.8934
+457/457 [==============================] - 0s 66us/step - loss: 1.6376 - accuracy: 0.7133 - val_loss: 0.7403 - val_accuracy: 0.8985
 Epoch 74/100
-457/457 [==============================] - 0s 75us/step - loss: 1.6046 - accuracy: 0.7199 - val_loss: 0.6848 - val_accuracy: 0.8883
+457/457 [==============================] - 0s 62us/step - loss: 1.2199 - accuracy: 0.7921 - val_loss: 0.8970 - val_accuracy: 0.8731
 Epoch 75/100
-457/457 [==============================] - 0s 72us/step - loss: 1.5144 - accuracy: 0.7615 - val_loss: 0.6268 - val_accuracy: 0.9036
+457/457 [==============================] - 0s 63us/step - loss: 1.3216 - accuracy: 0.7659 - val_loss: 0.7392 - val_accuracy: 0.9289
 Epoch 76/100
-457/457 [==============================] - 0s 77us/step - loss: 1.7058 - accuracy: 0.7352 - val_loss: 0.6818 - val_accuracy: 0.8579
+457/457 [==============================] - 0s 63us/step - loss: 1.2744 - accuracy: 0.7681 - val_loss: 0.7412 - val_accuracy: 0.9137
 Epoch 77/100
-457/457 [==============================] - 0s 72us/step - loss: 1.1621 - accuracy: 0.7790 - val_loss: 0.7626 - val_accuracy: 0.9086
+457/457 [==============================] - 0s 68us/step - loss: 1.0765 - accuracy: 0.7877 - val_loss: 0.8377 - val_accuracy: 0.8934
 Epoch 78/100
-457/457 [==============================] - 0s 67us/step - loss: 1.5514 - accuracy: 0.7309 - val_loss: 0.7149 - val_accuracy: 0.8883
+457/457 [==============================] - 0s 69us/step - loss: 1.2918 - accuracy: 0.7484 - val_loss: 0.6373 - val_accuracy: 0.8883
 Epoch 79/100
-457/457 [==============================] - 0s 66us/step - loss: 1.4360 - accuracy: 0.7724 - val_loss: 0.7377 - val_accuracy: 0.8883
+457/457 [==============================] - 0s 65us/step - loss: 1.6047 - accuracy: 0.7440 - val_loss: 0.9020 - val_accuracy: 0.8934
 Epoch 80/100
-457/457 [==============================] - 0s 65us/step - loss: 1.4487 - accuracy: 0.7593 - val_loss: 0.6848 - val_accuracy: 0.9036
+457/457 [==============================] - 0s 61us/step - loss: 1.2092 - accuracy: 0.7374 - val_loss: 0.7582 - val_accuracy: 0.9188
 Epoch 81/100
-457/457 [==============================] - 0s 71us/step - loss: 1.4450 - accuracy: 0.7615 - val_loss: 0.7584 - val_accuracy: 0.8985
+457/457 [==============================] - 0s 59us/step - loss: 1.2342 - accuracy: 0.7505 - val_loss: 0.5710 - val_accuracy: 0.8934
 Epoch 82/100
-457/457 [==============================] - 0s 74us/step - loss: 1.3575 - accuracy: 0.7637 - val_loss: 0.7508 - val_accuracy: 0.8629
+457/457 [==============================] - 0s 61us/step - loss: 1.2698 - accuracy: 0.7790 - val_loss: 0.6849 - val_accuracy: 0.9289
 Epoch 83/100
-457/457 [==============================] - 0s 77us/step - loss: 1.2776 - accuracy: 0.7812 - val_loss: 0.8117 - val_accuracy: 0.9036
+457/457 [==============================] - 0s 61us/step - loss: 1.2410 - accuracy: 0.7702 - val_loss: 0.8871 - val_accuracy: 0.8985
 Epoch 84/100
-457/457 [==============================] - 0s 69us/step - loss: 1.1843 - accuracy: 0.7965 - val_loss: 0.8631 - val_accuracy: 0.8579
+457/457 [==============================] - 0s 59us/step - loss: 1.3427 - accuracy: 0.7265 - val_loss: 0.6679 - val_accuracy: 0.9036
 Epoch 85/100
-457/457 [==============================] - 0s 67us/step - loss: 1.2827 - accuracy: 0.7221 - val_loss: 0.8946 - val_accuracy: 0.8731
+457/457 [==============================] - 0s 63us/step - loss: 1.3488 - accuracy: 0.7527 - val_loss: 0.6236 - val_accuracy: 0.9289
 Epoch 86/100
-457/457 [==============================] - 0s 67us/step - loss: 1.6023 - accuracy: 0.7330 - val_loss: 0.8483 - val_accuracy: 0.8985
+457/457 [==============================] - 0s 62us/step - loss: 1.2791 - accuracy: 0.7681 - val_loss: 0.6093 - val_accuracy: 0.8934
 Epoch 87/100
-457/457 [==============================] - 0s 67us/step - loss: 1.1799 - accuracy: 0.7746 - val_loss: 1.0767 - val_accuracy: 0.8426
+457/457 [==============================] - 0s 62us/step - loss: 1.3514 - accuracy: 0.7440 - val_loss: 0.7204 - val_accuracy: 0.9239
 Epoch 88/100
-457/457 [==============================] - 0s 72us/step - loss: 1.2803 - accuracy: 0.7571 - val_loss: 0.8866 - val_accuracy: 0.8883
+457/457 [==============================] - 0s 60us/step - loss: 1.1277 - accuracy: 0.7615 - val_loss: 0.8194 - val_accuracy: 0.9188
 Epoch 89/100
-457/457 [==============================] - 0s 80us/step - loss: 1.3830 - accuracy: 0.7637 - val_loss: 0.9512 - val_accuracy: 0.8934
+457/457 [==============================] - 0s 59us/step - loss: 1.2907 - accuracy: 0.7746 - val_loss: 0.6973 - val_accuracy: 0.9137
 Epoch 90/100
-457/457 [==============================] - 0s 66us/step - loss: 1.2983 - accuracy: 0.8009 - val_loss: 0.8203 - val_accuracy: 0.8985
+457/457 [==============================] - 0s 61us/step - loss: 1.0250 - accuracy: 0.7790 - val_loss: 0.6843 - val_accuracy: 0.9188
 Epoch 91/100
-457/457 [==============================] - 0s 68us/step - loss: 1.0916 - accuracy: 0.7943 - val_loss: 0.8201 - val_accuracy: 0.8985
+457/457 [==============================] - 0s 62us/step - loss: 1.3026 - accuracy: 0.7396 - val_loss: 0.6797 - val_accuracy: 0.8883
 Epoch 92/100
-457/457 [==============================] - 0s 66us/step - loss: 1.1395 - accuracy: 0.7702 - val_loss: 0.8747 - val_accuracy: 0.9036
+457/457 [==============================] - 0s 62us/step - loss: 1.4758 - accuracy: 0.7637 - val_loss: 0.7180 - val_accuracy: 0.9239
 Epoch 93/100
-457/457 [==============================] - 0s 66us/step - loss: 1.1811 - accuracy: 0.7702 - val_loss: 1.2125 - val_accuracy: 0.8934
+457/457 [==============================] - 0s 62us/step - loss: 1.4145 - accuracy: 0.7440 - val_loss: 1.0024 - val_accuracy: 0.9188
 Epoch 94/100
-457/457 [==============================] - 0s 73us/step - loss: 1.2922 - accuracy: 0.7527 - val_loss: 0.7137 - val_accuracy: 0.8832
+457/457 [==============================] - 0s 63us/step - loss: 1.3480 - accuracy: 0.7637 - val_loss: 0.7040 - val_accuracy: 0.9239
 Epoch 95/100
-457/457 [==============================] - 0s 80us/step - loss: 1.2034 - accuracy: 0.7571 - val_loss: 0.7403 - val_accuracy: 0.9036
+457/457 [==============================] - 0s 63us/step - loss: 1.1251 - accuracy: 0.7856 - val_loss: 1.0305 - val_accuracy: 0.9036
 Epoch 96/100
-457/457 [==============================] - 0s 70us/step - loss: 1.4194 - accuracy: 0.7287 - val_loss: 0.8289 - val_accuracy: 0.9036
+457/457 [==============================] - 0s 63us/step - loss: 1.3154 - accuracy: 0.7374 - val_loss: 0.8507 - val_accuracy: 0.9289
 Epoch 97/100
-457/457 [==============================] - 0s 82us/step - loss: 1.0789 - accuracy: 0.7681 - val_loss: 1.1647 - val_accuracy: 0.9086
+457/457 [==============================] - 0s 62us/step - loss: 1.3459 - accuracy: 0.7943 - val_loss: 0.8326 - val_accuracy: 0.9289
 Epoch 98/100
-457/457 [==============================] - 0s 67us/step - loss: 1.4863 - accuracy: 0.7593 - val_loss: 1.3174 - val_accuracy: 0.8934
+457/457 [==============================] - 0s 62us/step - loss: 1.1807 - accuracy: 0.7856 - val_loss: 0.8398 - val_accuracy: 0.8934
 Epoch 99/100
-457/457 [==============================] - 0s 67us/step - loss: 1.4448 - accuracy: 0.7440 - val_loss: 0.7572 - val_accuracy: 0.9086
+457/457 [==============================] - 0s 65us/step - loss: 1.2030 - accuracy: 0.7768 - val_loss: 0.8988 - val_accuracy: 0.9036
 Epoch 100/100
-457/457 [==============================] - 0s 66us/step - loss: 1.1378 - accuracy: 0.7549 - val_loss: 1.0810 - val_accuracy: 0.8883
+457/457 [==============================] - 0s 64us/step - loss: 1.2124 - accuracy: 0.8009 - val_loss: 0.8231 - val_accuracy: 0.9086
 </pre>
 </div>
 </div>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[33]:</div>
+    <div class="prompt output_prompt">Out[22]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;keras.callbacks.callbacks.History at 0x1a3bbb92b0&gt;</pre>
+<pre>&lt;keras.callbacks.callbacks.History at 0x1a3adab358&gt;</pre>
 </div>
 
 </div>
@@ -14487,7 +14487,7 @@ Epoch 100/100
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[34]:</div>
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">acc_test_over2</span> <span class="o">=</span> <span class="n">model1_over2</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">X_test_over</span><span class="p">,</span> <span class="n">y_test_over</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
@@ -14508,8 +14508,8 @@ Epoch 100/100
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>197/197 [==============================] - 0s 70us/step
-over-sampling test accuracy: 88.83%
+<pre>197/197 [==============================] - 0s 72us/step
+over-sampling test accuracy: 90.86%
 </pre>
 </div>
 </div>
@@ -14533,7 +14533,7 @@ over-sampling test accuracy: 88.83%
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">############## Random Forest ##############</span>
@@ -14546,13 +14546,13 @@ over-sampling test accuracy: 88.83%
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">###### random forest on over-sampling data</span>
 <span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="k">import</span> <span class="n">RandomForestClassifier</span>
 
-<span class="n">rf_over</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">rf_over</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">123</span><span class="p">)</span>
 <span class="n">rf_over</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_over</span><span class="p">,</span><span class="n">y_train_over</span><span class="p">)</span>
 </pre></div>
 
@@ -14566,7 +14566,7 @@ over-sampling test accuracy: 88.83%
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[24]:</div>
+    <div class="prompt output_prompt">Out[25]:</div>
 
 
 
@@ -14577,7 +14577,7 @@ over-sampling test accuracy: 88.83%
                        min_impurity_decrease=0.0, min_impurity_split=None,
                        min_samples_leaf=1, min_samples_split=2,
                        min_weight_fraction_leaf=0.0, n_estimators=100,
-                       n_jobs=None, oob_score=False, random_state=None,
+                       n_jobs=None, oob_score=False, random_state=123,
                        verbose=0, warm_start=False)</pre>
 </div>
 
@@ -14589,7 +14589,7 @@ over-sampling test accuracy: 88.83%
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="n">accuracy_score</span>
@@ -14611,7 +14611,7 @@ over-sampling test accuracy: 88.83%
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>over-sampling test accuracy: 96.45%
+<pre>over-sampling test accuracy: 96.95%
 </pre>
 </div>
 </div>
@@ -14635,16 +14635,16 @@ over-sampling test accuracy: 88.83%
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## random forest model with CV on over-sampling data</span>
 <span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="k">import</span> <span class="n">RandomForestClassifier</span>
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">cross_val_score</span>
 
-<span class="n">rfcv_over</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">123</span><span class="p">)</span>
+<span class="c1"># rfcv_over = RandomForestClassifier(n_estimators=100, random_state=123)</span>
 
-<span class="n">accs_over</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><span class="n">rfcv_over</span><span class="p">,</span> <span class="n">X</span><span class="o">=</span><span class="n">X_train_over</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y_train_over</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">accs_over</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><span class="n">rf_over</span><span class="p">,</span> <span class="n">X</span><span class="o">=</span><span class="n">X_train_over</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y_train_over</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">accs_over</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">accs_over</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
 </pre></div>
