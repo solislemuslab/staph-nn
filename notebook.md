@@ -41,6 +41,10 @@ Each phage files has different columns. Each phage file has the kmers/SNPs/group
 ## Jon random forest results
 File: `phageHostRange_predictiveAccuracy.xlsx`
 
+Note on data from Jon's slides: 
+"OD is optical density at 600 nm. These are the turbidities of "S", "SS", or "R" strains determined with the manual assay."
+
+"S = Sensitive (OD600 0.1-0.4), SS = Semi-sensitive (OD600 0.4-0.7), R = Resistant (OD600 0.7+). Essentially a partition of the quantitative OD phenotype"
 
 # Preliminary analyses
 
