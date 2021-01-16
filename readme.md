@@ -1,13 +1,7 @@
-# Neural network for staph data
-People
-    - Junting Wang (senior, stat)
+# Reproducible scripts for Moller et al (2021)
 
-# Steps to clone the repo locally
+Genes Influencing Phage Host Range in _Staphylococcus aureus_ on a Species-Wide Scale
 
-1. In the terminal, go to the folder where you want to put the local repository using cd
+Abraham G. Moller, Kyle Winston, Shiyu Ji, Junting Wang, Michelle N. Hargita Davis, Claudia R. Solis-Lemus, Timothy D. Read
 
-2. Type:
-```shell
-git clone https://github.com/solislemuslab/staph-nn.git
-```
-3. Inside this folder, create a subfolder called `data` where you will put the data. This folder is ignored in the `.gitignore` file, so nothing inside this folder will be pushed to github
+[mSphere](https://msphere.asm.org/content/6/1/e01263-20#sec-9)
